@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FFFFE9C3">
+    <Grid Background="#FFD5C3FF">
         
     </Grid>
 </Window>
