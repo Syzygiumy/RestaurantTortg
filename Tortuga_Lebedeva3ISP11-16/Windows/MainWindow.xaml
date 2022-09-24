@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FFFFEBC3">
-        
+        Title="MainWindow" Height="550" Width="900">
+    <Grid Background="#FFE5D6BA">
+        <Border Background="Black" Height="70" VerticalAlignment="Top" />
+
     </Grid>
 </Window>
