@@ -1,12 +1,13 @@
-﻿<Window x:Class="Tortuga_Lebedeva3ISP11_16.Windows.WindowProfile"
+﻿<Window x:Class="Tortuga_Lebedeva3ISP11_16.Windows.WindowProduct"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16.Windows"
         mc:Ignorable="d"
-        Title="WindowProfile" Height="450" Width="800">
+        Title="WindowProduct" Height="866" Width="1290">
     <Grid>
         
+
     </Grid>
 </Window>

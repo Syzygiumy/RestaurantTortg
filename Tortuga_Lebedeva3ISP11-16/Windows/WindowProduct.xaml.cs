@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Tortuga_Lebedeva3ISP11_16.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для WindowProfile.xaml
+    /// Логика взаимодействия для WindowProduct.xaml
     /// </summary>
-    public partial class WindowProfile : Window
+    public partial class WindowProduct : Window
     {
-        public WindowProfile()
+        public WindowProduct()
         {
             InitializeComponent();
         }

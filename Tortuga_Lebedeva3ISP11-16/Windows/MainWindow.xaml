@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="900">
-    <Grid Background="#FFE5D6BA">
-        <Border Background="Black" Height="70" VerticalAlignment="Top" />
+        Title="MainWindow" Height="866" Width="1280">
+    <Grid>
+        <Image Source="/Images/Главная менюшка.jpg" />
 
     </Grid>
 </Window>

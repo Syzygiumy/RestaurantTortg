@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16.Windows"
         mc:Ignorable="d"
-        Title="WindowMenu" Height="450" Width="800">
-    <Grid Background="#FFE5D6BA">
-        
+        Title="WindowMenu" Height="866" Width="1280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="122"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="388"/>
+            <ColumnDefinition Width="873*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="/Images/Менюшка меню2.jpg" Grid.ColumnSpan="3" Grid.RowSpan="3" />
+
+
     </Grid>
 </Window>
