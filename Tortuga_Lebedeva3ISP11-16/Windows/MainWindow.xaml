@@ -6,127 +6,126 @@
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16"
         mc:Ignorable="d"
         Title="MainWindow" Height="866" Width="1280">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="40"
+                                Background="{TemplateBinding Background}">
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <Image Source="/Images/Главная менюшка.jpg" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="333*"/>
+            <RowDefinition Height="142*"/>
+            <RowDefinition Height="131*"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="99*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="270*"/>
+            <ColumnDefinition Width="68*"/>
+            <ColumnDefinition Width="198*"/>
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="51*"/>
+            <ColumnDefinition Width="96*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/Images/Главная менюшка.jpg" Grid.ColumnSpan="15" Grid.RowSpan="6" />
         <Button
-            Margin="300,404,910,380" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_4"/>
+            x:Name="Btn_4"
+            Click="Btn_4_Click" Grid.Column="3" Grid.Row="1"
+            VerticalAlignment="Bottom" Height="70" Width="70" HorizontalAlignment="Center" Margin="-4,0,0,3"/>
         <Button
-            Margin="123,555,1089,246" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_5" Width="67"/>
+            x:Name="Btn_5"
+            Click="Btn_5_Click" Grid.Column="1" Grid.Row="2" Height="52" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,4,0"/>
         <Button
-            Margin="302,555,910,246" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_6" Width="67"/>
+            x:Name="Btn_6"
+            Click="Btn_6_Click" Grid.Column="3" Grid.Row="2" Height="51" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,3,0"/>
         <Button
-            Margin="124,631,1089,170" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_7" Width="67"/>
+            x:Name="Btn_7"
+            Click="Btn_7_Click" Grid.Row="3" Grid.Column="1" Height="70" Width="70"/>
         <Button
-            Margin="302,631,910,170" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_8" Width="67"/>
+            x:Name="Btn_8"
+            Click="Btn_8_Click" Grid.Column="4" Grid.Row="1" Height="70" Width="70" />
         <Button
-            Margin="124,699,1089,102" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_9" Width="67"/>
+            x:Name="Btn_9"
+            Click="Btn_9_Click" Grid.Column="1" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="302,699,910,102" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_10" Width="67"/>
+            x:Name="Btn_10"
+            Click="Btn_10_Click" Grid.Column="4" Grid.Row="1" Height="70" Width="70"/>
+        <Button 
+            x:Name="Btn_11"
+            Click="Btn_11_Click" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="508,718,705,83" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_11" Width="67"/>
+            x:Name="Btn_12"
+            Click="Btn_12_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="739,718,474,83" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_12" Width="67"/>
+            x:Name="Btn23"
+            Click="Btn23_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="930,656,281,129" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_2_Copy1"/>
+            x:Name="Btn24"
+            Click="Btn24_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="1086,656,125,129" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_2_Copy2"/>
+            x:Name="Btn_13"
+            Click="Btn_13_Click" Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="645,474,568,263" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_13"/>
+            x:Name="Btn_14"
+            Click="Btn_14_Click" Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="645,264,568,473" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_14"/>
+            x:Name="Btn_3"
+            Click="Btn_3_Click" Grid.Column="1" Grid.Row="1" 
+            Height="70" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="-19,0,0,0"/>
         <Button
-            Margin="112,404,1098,380" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_3"/>
+            x:Name="Btn_2"
+            Click="Btn_2_Click" Grid.Column="3" Grid.Row="0" 
+            Height="70" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="-5,0,0,0"/>
         <Button
-            Margin="300,264,910,520" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_2"/>
+            x:Name="Btn_1"
+            Click="Btn_1_Click" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" 
+            HorizontalAlignment="Center" Height="70" Width="70" Grid.ColumnSpan="1" Margin="-25.2,0,0,0"/>
         <Button
-            Margin="112,264,1098,520" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_1"/>
+            x:Name="Btn_19"
+            Click="Btn_19_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="911,461,319,319" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_19"/>
+            x:Name="Btn_20"
+            Click="Btn_20_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="985,461,245,319" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_20"/>
+            x:Name="Btn_21"
+            Click="Btn_21_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="1059,461,171,319" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_21"/>
+            x:Name="Btn_22"
+            Click="Btn_22_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="1133,461,97,319" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_22"/>
+            x:Name="Btn_15"
+            Click="Btn_15_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="911,290,319,490" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_15"/>
+            x:Name="Btn_16"
+            Click="Btn_16_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="985,290,245,490" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_16"/>
+            x:Name="Btn_17"
+            Click="Btn_17_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
         <Button
-            Margin="1059,290,171,490" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_17"/>
-        <Button
-            Margin="1133,290,97,490" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}"
-            x:Name="Btn_18"/>
+            x:Name="Btn_18"
+            Click="Btn_18_Click" Grid.Column="14" Grid.Row="1" Height="70" Width="70"/>
     </Grid>
 </Window>
