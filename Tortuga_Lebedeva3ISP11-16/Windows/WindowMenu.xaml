@@ -9,8 +9,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="122"/>
-            <RowDefinition Height="25*"/>
-            <RowDefinition/>
+            <RowDefinition Height="143*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="28*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -19,7 +25,7 @@
             <ColumnDefinition Width="19*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="/Images/Менюшка меню2.jpg" Grid.ColumnSpan="3" Grid.RowSpan="3" />
+        <Image Source="/Images/Менюшка меню2.jpg" Grid.ColumnSpan="3" Grid.RowSpan="9" />
 
 
     </Grid>

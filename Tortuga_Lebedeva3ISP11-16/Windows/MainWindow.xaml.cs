@@ -27,6 +27,27 @@ namespace Tortuga_Lebedeva3ISP11_16
             
         }
 
+        private void Btn_1_Click(object sender, RoutedEventArgs e)
+        {
+            WindowMenu menuWindow = new WindowMenu();
+            menuWindow.Show();
+            this.Close();
+        }
+
+        private void Btn_2_Click(object sender, RoutedEventArgs e)
+        {
+            WindowMenu menuWindow = new WindowMenu();
+            menuWindow.Show();
+            this.Close();
+        }
+
+        private void Btn_3_Click(object sender, RoutedEventArgs e)
+        {
+            WindowMenu menuWindow = new WindowMenu();
+            menuWindow.Show();
+            this.Close();
+        }
+
         private void Btn_4_Click(object sender, RoutedEventArgs e)
         {
             WindowMenu menuWindow = new WindowMenu();
@@ -90,20 +111,6 @@ namespace Tortuga_Lebedeva3ISP11_16
             this.Close();
         }
 
-        private void Btn23_Click(object sender, RoutedEventArgs e)
-        {
-            WindowMenu menuWindow = new WindowMenu();
-            menuWindow.Show();
-            this.Close();
-        }
-
-        private void Btn24_Click(object sender, RoutedEventArgs e)
-        {
-            WindowMenu menuWindow = new WindowMenu();
-            menuWindow.Show();
-            this.Close();
-        }
-
         private void Btn_13_Click(object sender, RoutedEventArgs e)
         {
             WindowMenu menuWindow = new WindowMenu();
@@ -118,21 +125,28 @@ namespace Tortuga_Lebedeva3ISP11_16
             this.Close();
         }
 
-        private void Btn_3_Click(object sender, RoutedEventArgs e)
+        private void Btn_15_Click(object sender, RoutedEventArgs e)
         {
             WindowMenu menuWindow = new WindowMenu();
             menuWindow.Show();
             this.Close();
         }
 
-        private void Btn_2_Click(object sender, RoutedEventArgs e)
+        private void Btn_16_Click(object sender, RoutedEventArgs e)
         {
             WindowMenu menuWindow = new WindowMenu();
             menuWindow.Show();
             this.Close();
         }
 
-        private void Btn_1_Click(object sender, RoutedEventArgs e)
+        private void Btn_17_Click(object sender, RoutedEventArgs e)
+        {
+            WindowMenu menuWindow = new WindowMenu();
+            menuWindow.Show();
+            this.Close();
+        }
+
+        private void Btn_18_Click(object sender, RoutedEventArgs e)
         {
             WindowMenu menuWindow = new WindowMenu();
             menuWindow.Show();
@@ -167,28 +181,14 @@ namespace Tortuga_Lebedeva3ISP11_16
             this.Close();
         }
 
-        private void Btn_15_Click(object sender, RoutedEventArgs e)
+        private void Btn_23_Click(object sender, RoutedEventArgs e)
         {
             WindowMenu menuWindow = new WindowMenu();
             menuWindow.Show();
             this.Close();
         }
 
-        private void Btn_16_Click(object sender, RoutedEventArgs e)
-        {
-            WindowMenu menuWindow = new WindowMenu();
-            menuWindow.Show();
-            this.Close();
-        }
-
-        private void Btn_17_Click(object sender, RoutedEventArgs e)
-        {
-            WindowMenu menuWindow = new WindowMenu();
-            menuWindow.Show();
-            this.Close();
-        }
-
-        private void Btn_18_Click(object sender, RoutedEventArgs e)
+        private void Btn_24_Click(object sender, RoutedEventArgs e)
         {
             WindowMenu menuWindow = new WindowMenu();
             menuWindow.Show();
