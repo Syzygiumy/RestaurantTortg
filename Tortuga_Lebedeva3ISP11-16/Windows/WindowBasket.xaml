@@ -6,7 +6,45 @@
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16.Windows"
         mc:Ignorable="d"
         Title="WindowBasket" Height="866" Width="1280">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+            <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="40" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Image Source="/Images/Корзина2.jpg" Grid.ColumnSpan="16" Grid.RowSpan="6" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="1227*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="111*"/>
+            <RowDefinition Height="112*"/>
+            <RowDefinition Height="597*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Images/Корзина2.jpg" Grid.RowSpan="4" Grid.ColumnSpan="3" />
+        <ListView Grid.Row="2"
+                  Grid.Column="1">
+            
+        </ListView>
+
+        <Button Style="{DynamicResource ButtonStyle1}" x:Name="Btn_Menu"
+                Grid.Column="1"
+                Grid.Row="1"
+                Height="83"
+                Width="87"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left" Margin="0,-23,0,0"
+                Click="Btn_Menu_Click"/>
     </Grid>
 </Window>

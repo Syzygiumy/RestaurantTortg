@@ -24,7 +24,21 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
         public WindowMenu()
         {
             InitializeComponent();
-            lv_Menu.ItemsSource = listMenu;
+            GetProductList();
+        }
+
+        private void GetProductList()
+        {
+
+            lv_Menu.ItemsSource = ClassHelper.AppData.context.Menu.ToList();
+            //lv_Menu.ItemsSource = ClassHelper.AppData.context.Menu.ToList().Where(i => i.CategoryID == numberCat).ToList();
+        }
+
+        private void Btn_Backet_Click(object sender, RoutedEventArgs e)
+        {
+            WindowBasket basketWindow = new WindowBasket();
+            basketWindow.Show();
+            this.Close();
         }
     }
 }

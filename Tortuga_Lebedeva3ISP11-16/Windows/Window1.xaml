@@ -28,7 +28,7 @@
                    FontSize="14" 
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
-                   Grid.ColumnSpan="4" Grid.Column="1" Margin="0,4,0,0"/>
+                   Grid.ColumnSpan="4" Grid.Column="1" Margin="0,1,0,0"/>
 
         <TextBlock Text="Краткое описание" FontFamily="Century Gothic"
                    FontSize="11" Foreground="#FF5B5A5A" 
@@ -72,12 +72,16 @@
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Left" Width="32" Grid.ColumnSpan="2"/>
 
-        <TextBlock Text="Стоимость" FontFamily="Century Gothic" FontSize="15" 
+        <TextBlock Text="Стоимость"
+                   FontFamily="Century Gothic" 
+                   FontSize="15" 
                    Foreground="Black" 
                    Grid.Column="0" 
                    Grid.Row="3" Height="20" 
                    VerticalAlignment="Center" 
-                   HorizontalAlignment="Left" Width="115" Margin="7,0,0,0"/>
+                   HorizontalAlignment="Left"
+                   Width="115" 
+                   Margin="7,0,0,0"/>
 
         <TextBlock Text="руб." FontFamily="Century Gothic" FontSize="15" 
                    Foreground="Black" 

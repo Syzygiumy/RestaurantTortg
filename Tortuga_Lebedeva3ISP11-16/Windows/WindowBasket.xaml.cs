@@ -23,5 +23,12 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
         {
             InitializeComponent();
         }
+
+        private void Btn_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            WindowMenu menuWindow = new WindowMenu();
+            menuWindow.Show();
+            this.Close();
+        }
     }
 }

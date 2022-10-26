@@ -8,6 +8,6 @@ namespace Tortuga_Lebedeva3ISP11_16.ClassHelper
 {
     internal class AppData
     {
-        public static DataBase.TortugaEntities1 context = new DataBase.TortugaEntities1();
+        public static DataBase.TortugaEntities1 context { get; set; } = new DataBase.TortugaEntities1();
     }
 }
