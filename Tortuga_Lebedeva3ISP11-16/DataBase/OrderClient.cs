@@ -12,25 +12,22 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Clientt
+    public partial class OrderClient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clientt()
+        public OrderClient()
         {
-            this.OrderMenu = new HashSet<OrderMenu>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string Patronymic { get; set; }
-        public int GenderID { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
+        public Nullable<int> OrderMenuID { get; set; }
+        public Nullable<int> TableID { get; set; }
+        public Nullable<decimal> SumCost { get; set; }
     
-        public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderMenu> OrderMenu { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
+        public virtual OrderMenu OrderMenu { get; set; }
+        public virtual Table Table { get; set; }
     }
 }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Tortuga_Lebedeva3ISP11_16.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для WindowOrder.xaml
+    /// Логика взаимодействия для WindowBasket.xaml
     /// </summary>
-    public partial class WindowOrder : Window
+    public partial class WindowBasket : Window
     {
-        public WindowOrder()
+        public WindowBasket()
         {
             InitializeComponent();
         }

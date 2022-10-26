@@ -12,25 +12,12 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
-        <EntityType Name="Clientt">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="Patronymic" Type="nvarchar" MaxLength="150" />
-          <Property Name="GenderID" Type="int" Nullable="false" />
-          <Property Name="Phone" Type="nchar" MaxLength="12" />
-          <Property Name="Email" Type="nvarchar" MaxLength="150" />
-          <Property Name="Birthday" Type="date" />
-        </EntityType>
-        <EntityType Name="Gender">
+        <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -38,20 +25,46 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="Size" Type="int" />
+          <Property Name="Quantity" Type="int" />
           <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="PreparingTimeMin" Type="int" />
           <Property Name="Photo" Type="nvarchar" MaxLength="1000" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="MenuIngredientID" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuIngredient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="Ingredient1ID" Type="int" />
+          <Property Name="Ingredient2ID" Type="int" />
+          <Property Name="Ingredient3ID" Type="int" />
+          <Property Name="Ingredient4ID" Type="int" />
+          <Property Name="Ingredient5ID" Type="int" />
+          <Property Name="Ingredient6ID" Type="int" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TableNumber" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="OrderClientID" Type="int" Nullable="false" />
+          <Property Name="PersonalID" Type="int" Nullable="false" />
+          <Property Name="OrderTime" Type="date" Nullable="false" />
           <Property Name="SumCost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderClient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="OrderMenuID" Type="int" />
+          <Property Name="TableID" Type="int" />
+          <Property Name="SumCost" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="OrderMenu">
           <Key>
@@ -59,12 +72,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MenuID" Type="int" Nullable="false" />
-          <Property Name="PersonalID" Type="int" Nullable="false" />
-          <Property Name="ClientID" Type="int" Nullable="false" />
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="DateOrder" Type="datetime" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Personal">
           <Key>
@@ -74,7 +82,6 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="150" />
-          <Property Name="GenderID" Type="int" Nullable="false" />
           <Property Name="Phone" Type="char" MaxLength="12" Nullable="false" />
           <Property Name="PositionID" Type="int" Nullable="false" />
           <Property Name="Salary" Type="int" />
@@ -86,6 +93,13 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -96,18 +110,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_Clientt_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Clientt" Type="Self.Clientt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Clientt">
-              <PropertyRef Name="GenderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableNumber" Type="int" />
+        </EntityType>
         <Association Name="FK_Menu_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
@@ -120,15 +129,159 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OrderMenu_Clientt">
-          <End Role="Clientt" Type="Self.Clientt" Multiplicity="1" />
-          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
+        <Association Name="FK_MenuIngredient_Ingredient">
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clientt">
+            <Principal Role="Ingredient">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="OrderMenu">
-              <PropertyRef Name="ClientID" />
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient1">
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient2">
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient3">
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient4ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient4">
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient5ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient5">
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="0..1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient6ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Menu1">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderClient">
+          <End Role="OrderClient" Type="Self.OrderClient" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderClient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Personal">
+          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderClient_OrderMenu">
+          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="0..1" />
+          <End Role="OrderClient" Type="Self.OrderClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderClient">
+              <PropertyRef Name="OrderMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderClient_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="OrderClient" Type="Self.OrderClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderClient">
+              <PropertyRef Name="TableID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -141,42 +294,6 @@
             </Principal>
             <Dependent Role="OrderMenu">
               <PropertyRef Name="MenuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderMenu_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="OrderMenu">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderMenu_Personal">
-          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
-          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personal">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="OrderMenu">
-              <PropertyRef Name="PersonalID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Personal_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Personal">
-              <PropertyRef Name="GenderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -225,41 +342,76 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Clientt" EntityType="Self.Clientt" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuIngredient" EntityType="Self.MenuIngredient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderClient" EntityType="Self.OrderClient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderMenu" EntityType="Self.OrderMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Clientt_Gender" Association="Self.FK_Clientt_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Clientt" EntitySet="Clientt" />
-          </AssociationSet>
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Menu_Category" Association="Self.FK_Menu_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
-          <AssociationSet Name="FK_OrderMenu_Clientt" Association="Self.FK_OrderMenu_Clientt">
-            <End Role="Clientt" EntitySet="Clientt" />
+          <AssociationSet Name="FK_MenuIngredient_Ingredient" Association="Self.FK_MenuIngredient_Ingredient">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient1" Association="Self.FK_MenuIngredient_Ingredient1">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient2" Association="Self.FK_MenuIngredient_Ingredient2">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient3" Association="Self.FK_MenuIngredient_Ingredient3">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient4" Association="Self.FK_MenuIngredient_Ingredient4">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient5" Association="Self.FK_MenuIngredient_Ingredient5">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Menu" Association="Self.FK_MenuIngredient_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Menu1" Association="Self.FK_MenuIngredient_Menu1">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderClient" Association="Self.FK_Order_OrderClient">
+            <End Role="OrderClient" EntitySet="OrderClient" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Personal" Association="Self.FK_Order_Personal">
+            <End Role="Personal" EntitySet="Personal" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderClient_OrderMenu" Association="Self.FK_OrderClient_OrderMenu">
             <End Role="OrderMenu" EntitySet="OrderMenu" />
+            <End Role="OrderClient" EntitySet="OrderClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderClient_Table" Association="Self.FK_OrderClient_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="OrderClient" EntitySet="OrderClient" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderMenu_Menu" Association="Self.FK_OrderMenu_Menu">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderMenu_Personal" Association="Self.FK_OrderMenu_Personal">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Personal_Gender" Association="Self.FK_Personal_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Personal" EntitySet="Personal" />
           </AssociationSet>
           <AssociationSet Name="FK_Personal_Position" Association="Self.FK_Personal_Position">
             <End Role="Position" EntitySet="Position" />
@@ -270,79 +422,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Menu" Relationship="Self.FK_Menu_Category" FromRole="Category" ToRole="Menu" />
-        </EntityType>
-        <EntityType Name="Clientt">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Patronymic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="GenderID" Type="Int32" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Birthday" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Clientt_Gender" FromRole="Clientt" ToRole="Gender" />
-          <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Clientt" FromRole="Clientt" ToRole="OrderMenu" />
-        </EntityType>
-        <EntityType Name="Gender">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Clientt" Relationship="Self.FK_Clientt_Gender" FromRole="Gender" ToRole="Clientt" />
-          <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_Gender" FromRole="Gender" ToRole="Personal" />
-        </EntityType>
-        <EntityType Name="Menu">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Size" Type="Int32" />
-          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="PreparingTimeMin" Type="Int32" />
-          <Property Name="Photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Menu_Category" FromRole="Menu" ToRole="Category" />
-          <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Menu" FromRole="Menu" ToRole="OrderMenu" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TableNumber" Type="Int32" Nullable="false" />
-          <Property Name="SumCost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Order" FromRole="Order" ToRole="OrderMenu" />
-        </EntityType>
-        <EntityType Name="OrderMenu">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MenuID" Type="Int32" Nullable="false" />
-          <Property Name="PersonalID" Type="Int32" Nullable="false" />
-          <Property Name="ClientID" Type="Int32" Nullable="false" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Clientt" Relationship="Self.FK_OrderMenu_Clientt" FromRole="OrderMenu" ToRole="Clientt" />
-          <NavigationProperty Name="Menu" Relationship="Self.FK_OrderMenu_Menu" FromRole="OrderMenu" ToRole="Menu" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderMenu_Order" FromRole="OrderMenu" ToRole="Order" />
-          <NavigationProperty Name="Personal" Relationship="Self.FK_OrderMenu_Personal" FromRole="OrderMenu" ToRole="Personal" />
-        </EntityType>
         <EntityType Name="Personal">
           <Key>
             <PropertyRef Name="ID" />
@@ -351,13 +430,11 @@
           <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Patronymic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="GenderID" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="PositionID" Type="Int32" Nullable="false" />
           <Property Name="Salary" Type="Int32" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Personal_Gender" FromRole="Personal" ToRole="Gender" />
-          <NavigationProperty Name="OrderMenu" Relationship="Self.FK_OrderMenu_Personal" FromRole="Personal" ToRole="OrderMenu" />
           <NavigationProperty Name="Position" Relationship="Self.FK_Personal_Position" FromRole="Personal" ToRole="Position" />
+          <NavigationProperty Name="Order" Relationship="Model.FK_Order_Personal" FromRole="Personal" ToRole="Order" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -367,100 +444,14 @@
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_Position" FromRole="Position" ToRole="Personal" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="Table">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableNumber" Type="Int32" />
+          <NavigationProperty Name="OrderClient" Relationship="Model.FK_OrderClient_Table" FromRole="Table" ToRole="OrderClient" />
         </EntityType>
-        <Association Name="FK_Menu_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Menu">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Clientt_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Clientt" Type="Self.Clientt" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Clientt">
-              <PropertyRef Name="GenderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderMenu_Clientt">
-          <End Role="Clientt" Type="Self.Clientt" Multiplicity="1" />
-          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientt">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="OrderMenu">
-              <PropertyRef Name="ClientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Personal_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Personal">
-              <PropertyRef Name="GenderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderMenu_Menu">
-          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
-          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Menu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="OrderMenu">
-              <PropertyRef Name="MenuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderMenu_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="OrderMenu">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderMenu_Personal">
-          <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
-          <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personal">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="OrderMenu">
-              <PropertyRef Name="PersonalID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Personal_Position">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
           <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
@@ -473,44 +464,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="Clientt" EntityType="Self.Clientt" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="Menu" EntityType="Self.Menu" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="OrderMenu" EntityType="Self.OrderMenu" />
+        <EntityContainer Name="TortugaEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Personal" EntityType="Self.Personal" />
           <EntitySet Name="Position" EntityType="Self.Position" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Menu_Category" Association="Self.FK_Menu_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Menu" EntitySet="Menu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Clientt_Gender" Association="Self.FK_Clientt_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Clientt" EntitySet="Clientt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderMenu_Clientt" Association="Self.FK_OrderMenu_Clientt">
-            <End Role="Clientt" EntitySet="Clientt" />
-            <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Personal_Gender" Association="Self.FK_Personal_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Personal" EntitySet="Personal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderMenu_Menu" Association="Self.FK_OrderMenu_Menu">
-            <End Role="Menu" EntitySet="Menu" />
-            <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderMenu_Personal" Association="Self.FK_OrderMenu_Personal">
-            <End Role="Personal" EntitySet="Personal" />
-            <End Role="OrderMenu" EntitySet="OrderMenu" />
-          </AssociationSet>
+          <EntitySet Name="Table" EntityType="Self.Table" />
           <AssociationSet Name="FK_Personal_Position" Association="Self.FK_Personal_Position">
             <End Role="Position" EntitySet="Position" />
             <End Role="Personal" EntitySet="Personal" />
@@ -545,6 +502,75 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Category" EntityType="Model.Category" />
+          <EntitySet Name="Ingredient" EntityType="Model.Ingredient" />
+          <EntitySet Name="Menu" EntityType="Model.Menu" />
+          <EntitySet Name="MenuIngredient" EntityType="Model.MenuIngredient" />
+          <EntitySet Name="Order" EntityType="Model.Order" />
+          <EntitySet Name="OrderClient" EntityType="Model.OrderClient" />
+          <EntitySet Name="OrderMenu" EntityType="Model.OrderMenu" />
+          <EntitySet Name="Status" EntityType="Model.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
+          <AssociationSet Name="FK_Menu_Category" Association="Model.FK_Menu_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient" Association="Model.FK_MenuIngredient_Ingredient">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient1" Association="Model.FK_MenuIngredient_Ingredient1">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient2" Association="Model.FK_MenuIngredient_Ingredient2">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient3" Association="Model.FK_MenuIngredient_Ingredient3">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient4" Association="Model.FK_MenuIngredient_Ingredient4">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Ingredient5" Association="Model.FK_MenuIngredient_Ingredient5">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Menu" Association="Model.FK_MenuIngredient_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuIngredient_Menu1" Association="Model.FK_MenuIngredient_Menu1">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderMenu_Menu" Association="Model.FK_OrderMenu_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="OrderMenu" EntitySet="OrderMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderClient" Association="Model.FK_Order_OrderClient">
+            <End Role="OrderClient" EntitySet="OrderClient" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Personal" Association="Model.FK_Order_Personal">
+            <End Role="Personal" EntitySet="Personal" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Model.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderClient_OrderMenu" Association="Model.FK_OrderClient_OrderMenu">
+            <End Role="OrderMenu" EntitySet="OrderMenu" />
+            <End Role="OrderClient" EntitySet="OrderClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderClient_Table" Association="Model.FK_OrderClient_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="OrderClient" EntitySet="OrderClient" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -557,79 +583,306 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menu" Relationship="Model.FK_Menu_Category" FromRole="Category" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuIngredient" Relationship="Model.FK_MenuIngredient_Ingredient" FromRole="Ingredient" ToRole="MenuIngredient" />
+          <NavigationProperty Name="MenuIngredient1" Relationship="Model.FK_MenuIngredient_Ingredient1" FromRole="Ingredient" ToRole="MenuIngredient" />
+          <NavigationProperty Name="MenuIngredient2" Relationship="Model.FK_MenuIngredient_Ingredient2" FromRole="Ingredient" ToRole="MenuIngredient" />
+          <NavigationProperty Name="MenuIngredient3" Relationship="Model.FK_MenuIngredient_Ingredient3" FromRole="Ingredient" ToRole="MenuIngredient" />
+          <NavigationProperty Name="MenuIngredient4" Relationship="Model.FK_MenuIngredient_Ingredient4" FromRole="Ingredient" ToRole="MenuIngredient" />
+          <NavigationProperty Name="MenuIngredient5" Relationship="Model.FK_MenuIngredient_Ingredient5" FromRole="Ingredient" ToRole="MenuIngredient" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="PreparingTimeMin" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="MenuIngredientID" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Model.FK_Menu_Category" FromRole="Menu" ToRole="Category" />
+          <NavigationProperty Name="MenuIngredient" Relationship="Model.FK_MenuIngredient_Menu" FromRole="Menu" ToRole="MenuIngredient" />
+          <NavigationProperty Name="MenuIngredient1" Relationship="Model.FK_MenuIngredient_Menu1" FromRole="Menu" ToRole="MenuIngredient" />
+          <NavigationProperty Name="OrderMenu" Relationship="Model.FK_OrderMenu_Menu" FromRole="Menu" ToRole="OrderMenu" />
+        </EntityType>
+        <EntityType Name="MenuIngredient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="Ingredient1ID" Type="Int32" />
+          <Property Name="Ingredient2ID" Type="Int32" />
+          <Property Name="Ingredient3ID" Type="Int32" />
+          <Property Name="Ingredient4ID" Type="Int32" />
+          <Property Name="Ingredient5ID" Type="Int32" />
+          <Property Name="Ingredient6ID" Type="Int32" />
+          <NavigationProperty Name="Ingredient" Relationship="Model.FK_MenuIngredient_Ingredient" FromRole="MenuIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Ingredient1" Relationship="Model.FK_MenuIngredient_Ingredient1" FromRole="MenuIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Ingredient2" Relationship="Model.FK_MenuIngredient_Ingredient2" FromRole="MenuIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Ingredient3" Relationship="Model.FK_MenuIngredient_Ingredient3" FromRole="MenuIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Ingredient4" Relationship="Model.FK_MenuIngredient_Ingredient4" FromRole="MenuIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Ingredient5" Relationship="Model.FK_MenuIngredient_Ingredient5" FromRole="MenuIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Menu" Relationship="Model.FK_MenuIngredient_Menu" FromRole="MenuIngredient" ToRole="Menu" />
+          <NavigationProperty Name="Menu1" Relationship="Model.FK_MenuIngredient_Menu1" FromRole="MenuIngredient" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="OrderClientID" Type="Int32" Nullable="false" />
+          <Property Name="PersonalID" Type="Int32" Nullable="false" />
+          <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SumCost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderClient" Relationship="Model.FK_Order_OrderClient" FromRole="Order" ToRole="OrderClient" />
+          <NavigationProperty Name="Personal" Relationship="Model.FK_Order_Personal" FromRole="Order" ToRole="Personal" />
+          <NavigationProperty Name="Status" Relationship="Model.FK_Order_Status" FromRole="Order" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="OrderClient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="OrderMenuID" Type="Int32" />
+          <Property Name="TableID" Type="Int32" />
+          <Property Name="SumCost" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Order" Relationship="Model.FK_Order_OrderClient" FromRole="OrderClient" ToRole="Order" />
+          <NavigationProperty Name="OrderMenu" Relationship="Model.FK_OrderClient_OrderMenu" FromRole="OrderClient" ToRole="OrderMenu" />
+          <NavigationProperty Name="Table" Relationship="Model.FK_OrderClient_Table" FromRole="OrderClient" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="OrderMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="Model.FK_OrderMenu_Menu" FromRole="OrderMenu" ToRole="Menu" />
+          <NavigationProperty Name="OrderClient" Relationship="Model.FK_OrderClient_OrderMenu" FromRole="OrderMenu" ToRole="OrderClient" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Model.FK_Order_Status" FromRole="Status" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Menu_Category">
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.Menu" Role="Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient">
+          <End Type="Model.Ingredient" Role="Ingredient" Multiplicity="0..1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient1">
+          <End Type="Model.Ingredient" Role="Ingredient" Multiplicity="0..1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient2">
+          <End Type="Model.Ingredient" Role="Ingredient" Multiplicity="0..1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient3ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient3">
+          <End Type="Model.Ingredient" Role="Ingredient" Multiplicity="0..1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient4ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient4">
+          <End Type="Model.Ingredient" Role="Ingredient" Multiplicity="0..1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient5ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Ingredient5">
+          <End Type="Model.Ingredient" Role="Ingredient" Multiplicity="0..1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="Ingredient6ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Menu">
+          <End Type="Model.Menu" Role="Menu" Multiplicity="1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuIngredient_Menu1">
+          <End Type="Model.Menu" Role="Menu" Multiplicity="1" />
+          <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuIngredient">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderMenu_Menu">
+          <End Type="Model.Menu" Role="Menu" Multiplicity="1" />
+          <End Type="Model.OrderMenu" Role="OrderMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderClient">
+          <End Type="Model.OrderClient" Role="OrderClient" Multiplicity="1" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderClient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Personal">
+          <End Type="Model.Personal" Role="Personal" Multiplicity="1" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PersonalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Type="Model.Status" Role="Status" Multiplicity="1" />
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderClient_OrderMenu">
+          <End Type="Model.OrderMenu" Role="OrderMenu" Multiplicity="0..1" />
+          <End Type="Model.OrderClient" Role="OrderClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderClient">
+              <PropertyRef Name="OrderMenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderClient_Table">
+          <End Type="Model.Table" Role="Table" Multiplicity="0..1" />
+          <End Type="Model.OrderClient" Role="OrderClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderClient">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="Model.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clientt">
-            <EntityTypeMapping TypeName="Model.Clientt">
-              <MappingFragment StoreEntitySet="Clientt">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="Model.Gender">
-              <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Menu">
-            <EntityTypeMapping TypeName="Model.Menu">
-              <MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="PreparingTimeMin" ColumnName="PreparingTimeMin" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="Model.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
-                <ScalarProperty Name="SumCost" ColumnName="SumCost" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderMenu">
-            <EntityTypeMapping TypeName="Model.OrderMenu">
-              <MappingFragment StoreEntitySet="OrderMenu">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
-                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="TortugaEntities1">
           <EntitySetMapping Name="Personal">
             <EntityTypeMapping TypeName="Model.Personal">
               <MappingFragment StoreEntitySet="Personal">
@@ -637,7 +890,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="PositionID" ColumnName="PositionID" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
@@ -652,14 +904,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="Model.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -687,6 +936,101 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Model.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Model.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingredient">
+            <EntityTypeMapping TypeName="Model.Ingredient">
+              <MappingFragment StoreEntitySet="Ingredient">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="Model.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuIngredientID" ColumnName="MenuIngredientID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PreparingTimeMin" ColumnName="PreparingTimeMin" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuIngredient">
+            <EntityTypeMapping TypeName="Model.MenuIngredient">
+              <MappingFragment StoreEntitySet="MenuIngredient">
+                <ScalarProperty Name="Ingredient6ID" ColumnName="Ingredient6ID" />
+                <ScalarProperty Name="Ingredient5ID" ColumnName="Ingredient5ID" />
+                <ScalarProperty Name="Ingredient4ID" ColumnName="Ingredient4ID" />
+                <ScalarProperty Name="Ingredient3ID" ColumnName="Ingredient3ID" />
+                <ScalarProperty Name="Ingredient2ID" ColumnName="Ingredient2ID" />
+                <ScalarProperty Name="Ingredient1ID" ColumnName="Ingredient1ID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="SumCost" ColumnName="SumCost" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="PersonalID" ColumnName="PersonalID" />
+                <ScalarProperty Name="OrderClientID" ColumnName="OrderClientID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderClient">
+            <EntityTypeMapping TypeName="Model.OrderClient">
+              <MappingFragment StoreEntitySet="OrderClient">
+                <ScalarProperty Name="SumCost" ColumnName="SumCost" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="OrderMenuID" ColumnName="OrderMenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderMenu">
+            <EntityTypeMapping TypeName="Model.OrderMenu">
+              <MappingFragment StoreEntitySet="OrderMenu">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="Model.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -19,9 +19,12 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
     /// </summary>
     public partial class WindowMenu : Window
     {
+        List<DataBase.Menu> listMenu = new List<DataBase.Menu>();
+
         public WindowMenu()
         {
             InitializeComponent();
+            lv_Menu.ItemsSource = listMenu;
         }
     }
 }

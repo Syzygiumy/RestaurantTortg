@@ -12,20 +12,24 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderMenu
+    public partial class MenuIngredient
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OrderMenu()
-        {
-            this.OrderClient = new HashSet<OrderClient>();
-        }
-    
         public int ID { get; set; }
         public int MenuID { get; set; }
-        public int Quantity { get; set; }
+        public Nullable<int> Ingredient1ID { get; set; }
+        public Nullable<int> Ingredient2ID { get; set; }
+        public Nullable<int> Ingredient3ID { get; set; }
+        public Nullable<int> Ingredient4ID { get; set; }
+        public Nullable<int> Ingredient5ID { get; set; }
+        public Nullable<int> Ingredient6ID { get; set; }
     
+        public virtual Ingredient Ingredient { get; set; }
+        public virtual Ingredient Ingredient1 { get; set; }
+        public virtual Ingredient Ingredient2 { get; set; }
+        public virtual Ingredient Ingredient3 { get; set; }
+        public virtual Ingredient Ingredient4 { get; set; }
+        public virtual Ingredient Ingredient5 { get; set; }
         public virtual Menu Menu { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderClient> OrderClient { get; set; }
+        public virtual Menu Menu1 { get; set; }
     }
 }

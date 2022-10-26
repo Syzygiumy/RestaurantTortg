@@ -14,17 +14,15 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            this.OrderMenu = new HashSet<OrderMenu>();
-        }
-    
         public int ID { get; set; }
-        public int TableNumber { get; set; }
+        public int OrderClientID { get; set; }
+        public int PersonalID { get; set; }
+        public System.DateTime OrderTime { get; set; }
         public decimal SumCost { get; set; }
+        public int StatusID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderMenu> OrderMenu { get; set; }
+        public virtual OrderClient OrderClient { get; set; }
+        public virtual Personal Personal { get; set; }
+        public virtual Status Status { get; set; }
     }
 }

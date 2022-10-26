@@ -12,21 +12,18 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Gender
+    public partial class Status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Gender()
+        public Status()
         {
-            this.Clientt = new HashSet<Clientt>();
-            this.Personal = new HashSet<Personal>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clientt> Clientt { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Personal> Personal { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

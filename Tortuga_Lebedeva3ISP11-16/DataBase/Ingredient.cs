@@ -12,30 +12,33 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Menu
+    public partial class Ingredient
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Menu()
+        public Ingredient()
         {
+            this.MenuIngredient = new HashSet<MenuIngredient>();
             this.MenuIngredient1 = new HashSet<MenuIngredient>();
-            this.OrderMenu = new HashSet<OrderMenu>();
+            this.MenuIngredient2 = new HashSet<MenuIngredient>();
+            this.MenuIngredient3 = new HashSet<MenuIngredient>();
+            this.MenuIngredient4 = new HashSet<MenuIngredient>();
+            this.MenuIngredient5 = new HashSet<MenuIngredient>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public decimal Cost { get; set; }
-        public Nullable<int> PreparingTimeMin { get; set; }
-        public string Photo { get; set; }
-        public string Description { get; set; }
-        public int CategoryID { get; set; }
-        public Nullable<int> MenuIngredientID { get; set; }
     
-        public virtual Category Category { get; set; }
-        public virtual MenuIngredient MenuIngredient { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MenuIngredient> MenuIngredient { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MenuIngredient> MenuIngredient1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderMenu> OrderMenu { get; set; }
+        public virtual ICollection<MenuIngredient> MenuIngredient2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MenuIngredient> MenuIngredient3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MenuIngredient> MenuIngredient4 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MenuIngredient> MenuIngredient5 { get; set; }
     }
 }

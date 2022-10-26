@@ -72,10 +72,29 @@
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Left" Width="32" Grid.ColumnSpan="2"/>
 
-        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" CornerRadius="70" Width="87" Height="57" Background="White">
-            <Image 
-               Source="/Images/20079-ed4_wide.jpg" Width="84"/>
-        </Border>
+        <TextBlock Text="Стоимость" FontFamily="Century Gothic" FontSize="15" 
+                   Foreground="Black" 
+                   Grid.Column="0" 
+                   Grid.Row="3" Height="20" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Left" Width="115" Margin="7,0,0,0"/>
+
+        <TextBlock Text="руб." FontFamily="Century Gothic" FontSize="15" 
+                   Foreground="Black" 
+                   Grid.Column="1" 
+                   Grid.Row="3" Height="20" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Left" Width="35" Margin="7,0,0,0"/>
+
+        <Ellipse Grid.RowSpan="4" Height="85" VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center" Width="90"
+                 Margin="0,0,4,48">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/Images/20079-ed4_wide.jpg" Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        
+        
         
 
     </Grid>
