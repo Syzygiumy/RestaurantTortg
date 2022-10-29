@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16"
         mc:Ignorable="d"
-        Title="MainWindow" Height="866" Width="1280">
+        Title="MainWindow" Height="866" Width="1280"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">

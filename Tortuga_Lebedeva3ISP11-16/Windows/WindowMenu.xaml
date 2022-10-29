@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tortuga_Lebedeva3ISP11_16.Windows"
         mc:Ignorable="d"
-        Title="WindowMenu" Height="866" Width="1280">
+        Title="WindowMenu" Height="866" Width="1280"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="122"/>
@@ -49,11 +50,11 @@
                             <ImageBrush ImageSource="/Images/Frame 1.jpg"/>
                         </Grid.Background>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="121*"/>
-                            <ColumnDefinition Width="88*"/>
-                            <ColumnDefinition Width="21*"/>
-                            <ColumnDefinition Width="124*"/>
-                            <ColumnDefinition Width="46*"/>
+                            <ColumnDefinition Width="115*"/>
+                            <ColumnDefinition Width="84*"/>
+                            <ColumnDefinition Width="27*"/>
+                            <ColumnDefinition Width="115*"/>
+                            <ColumnDefinition Width="40*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
@@ -65,83 +66,77 @@
 
 
                         <Image Grid.Column="0"
-                               Grid.Row="0" Grid.RowSpan="3"/>
+                               Grid.Row="0" Grid.RowSpan="3" Margin="0,0,3,0"/>
 
                         <TextBlock Text="{Binding Cost}"
                                    FontFamily="Century Gothic" 
                                    FontSize="17" 
                                    Foreground="Black" 
                                    Grid.Row="3"
-                                   Grid.ColumnSpan="1"
-                                   Width="110"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center" Height="18" Margin="8,0,0,0"/>
+                                   Width="79"
+                                   HorizontalAlignment="Left" Margin="26,5,0,5"/>
 
-                        <TextBlock Text="Название блюда" FontFamily="Century Gothic"
-                                   FontSize="14" 
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
+                        <TextBlock Text="{Binding Name}" FontFamily="Century Gothic"
+                                   FontSize="14"
                                     Grid.ColumnSpan="4" 
-                                   Grid.Column="1" Margin="3,0,0,0" Height="18" Width="269"/>
+                                   Grid.Column="1" Margin="6,4,4,5"/>
 
                         <TextBlock Text="Краткое описание" FontFamily="Century Gothic"
                                    FontSize="11" Foreground="#FF5B5A5A" 
-                                   Grid.ColumnSpan="4" 
-                                   VerticalAlignment="Top" 
-                                   HorizontalAlignment="Left"
+                                   Grid.ColumnSpan="4"
                                    Grid.Column="1" 
-                                   Grid.Row="1" Width="271" 
-                                   Height="73" Margin="3,0,0,0"/>
+                                   Grid.Row="1" Margin="4,3,7,3" Width="Auto" Height="Auto"/>
 
                         <TextBlock Text="Время приготовления:" 
-                   FontFamily="Century Gothic" FontSize="11" 
+                   FontFamily="Century Gothic" FontSize="10" 
                    Foreground="#FF8D7B58" 
-                   Grid.Column="3" Grid.Row="2" 
-                   Height="13" VerticalAlignment="Center" 
-                   HorizontalAlignment="Left" Width="122"/>
+                   Grid.Column="3" Grid.Row="2" Margin="2,2,32,2" Grid.ColumnSpan="2"/>
 
-                        <TextBlock Text="Кол-во порций:" FontFamily="Century Gothic" FontSize="11" 
+                        <TextBlock Text="Кол-во порций:" FontFamily="Century Gothic" FontSize="10" 
                    Foreground="#FF8D7B58" 
                    Grid.Column="1" 
-                   Grid.Row="2" Height="13" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Center" Width="84"/>
+                   Grid.Row="2" Margin="2,2,6,2"/>
 
                         <TextBlock Text="Заказать" FontFamily="Century Gothic" Grid.Column="3" 
-                   Grid.Row="3" Foreground="White" 
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="18" Grid.ColumnSpan="2" Width="82" Height="21" Margin="43,0,0,0"/>
+                   Grid.Row="3" Foreground="White"
+                   FontSize="18" Grid.ColumnSpan="2" Margin="52,4,8,4"/>
 
-                   <TextBlock Text="{Binding Quantity}" FontFamily="Century Gothic" FontSize="11" 
+                        <TextBlock Text="{Binding Quantity}" FontFamily="Century Gothic" FontSize="11" 
                    Foreground="#FF8D7B58"
-                   Grid.Column="2" Grid.Row="2"
-                   Height="13" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Center"
-                   Width="19" TextAlignment="Center"/>
+                   Grid.Column="2" Grid.Row="2" TextAlignment="Center" Margin="1,2,0,2"/>
 
                         <TextBlock Text="{Binding PreparingTimeMin}" FontFamily="Century Gothic" 
                    FontSize="11" 
                    Foreground="#FF8D7B58" 
-                   Grid.Column="4" Grid.Row="2" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Left" Width="32" Grid.ColumnSpan="2"/>
+                   Grid.Column="4" Grid.Row="2" Margin="2,2,6,2"/>
 
                         <TextBlock Text="руб." FontFamily="Century Gothic" FontSize="15" 
                    Foreground="Black" 
                    Grid.Column="1" 
-                   Grid.Row="3" Height="20" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Left" Width="35" Margin="7,0,0,0"/>
+                   Grid.Row="3" Margin="5,5,42,5" Width="Auto"/>
 
-                        <Ellipse Grid.RowSpan="4" Height="87" VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center" Width="94"
-                 Margin="0,0,1,47.3">
+                        <Ellipse Grid.RowSpan="2"
+                 Margin="12,16,13,1" Width="Auto">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="/Images/20079-ed4_wide.jpg" Stretch="UniformToFill"/>
                             </Ellipse.Fill>
                         </Ellipse>
+                        
+                        <Button Grid.Column="1"
+                                Grid.ColumnSpan="4" Opacity="0"
+                                x:Name="Dtn_Dish1"
+                                Click="Dtn_Dish1_Click"/>
+                        
+                        <Button Grid.RowSpan="3" Opacity="0"
+                                 x:Name="Dtn_Dish2"
+                                Click="Dtn_Dish2_Click"/>
+
+                        <Button Grid.Column="3"
+                                Grid.Row="3"
+                                Grid.ColumnSpan="2" Width="143" 
+                                Margin="6,0,0,0" Opacity="0"
+                                 x:Name="Dtn_Order"
+                                Click="Dtn_Order_Click"/>
 
                     </Grid>
 
@@ -248,9 +243,9 @@
                 Height="70"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right" 
-                Margin="0,112,27,0"
+                Margin="0,106,27,0"
                 x:Name="Btn_Backet"
-                Click="Btn_Backet_Click">
+                Click="Btn_Backet_Click" Opacity="0">
         </Button>
 
         <!-- Кнопки -->

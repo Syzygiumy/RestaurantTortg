@@ -128,8 +128,14 @@
     <Compile Include="Windows\WindowBasket.xaml.cs">
       <DependentUpon>WindowBasket.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WindowDish.xaml.cs">
+      <DependentUpon>WindowDish.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WindowMenu.xaml.cs">
       <DependentUpon>WindowMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowOrder.xaml.cs">
+      <DependentUpon>WindowOrder.xaml</DependentUpon>
     </Compile>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -151,7 +157,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\WindowDish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\WindowMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +229,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\Окно заказа.jpg" />
+    <Resource Include="Images\Окно подробности блюда.jpg" />
     <Resource Include="Images\Корзина2.jpg" />
     <Resource Include="Images\261197.png" />
   </ItemGroup>

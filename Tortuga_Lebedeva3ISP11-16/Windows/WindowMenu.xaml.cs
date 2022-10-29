@@ -40,5 +40,29 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
             basketWindow.Show();
             this.Close();
         }
+
+        private void Dtn_Dish1_Click(object sender, RoutedEventArgs e)
+        {
+            WindowDish dishWindow = new WindowDish();
+            this.Opacity = 0.2;
+            dishWindow.ShowDialog();
+            this.Opacity = 1;
+        }
+
+        private void Dtn_Dish2_Click(object sender, RoutedEventArgs e)
+        {
+            WindowDish dishWindow = new WindowDish();
+            this.Opacity = 0.2;
+            dishWindow.ShowDialog();
+            this.Opacity = 1;
+        }
+
+        private void Dtn_Order_Click(object sender, RoutedEventArgs e)
+        {
+            WindowOrder orderWindow = new WindowOrder();
+            this.Opacity = 0.2;
+            orderWindow.ShowDialog();
+            this.Opacity = 1;
+        }
     }
 }

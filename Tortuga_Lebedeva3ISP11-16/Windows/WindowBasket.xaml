@@ -45,6 +45,6 @@
                 Width="87"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left" Margin="0,-23,0,0"
-                Click="Btn_Menu_Click"/>
+                Click="Btn_Menu_Click" Visibility="Visible" Opacity="0"/>
     </Grid>
 </Window>

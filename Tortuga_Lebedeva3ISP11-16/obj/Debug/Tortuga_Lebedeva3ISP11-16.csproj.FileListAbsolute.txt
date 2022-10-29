@@ -27,3 +27,7 @@ C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\
 C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\obj\Debug\Windows\Window1.baml
 C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\obj\Debug\Windows\WindowBasket.g.cs
 C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\obj\Debug\Windows\WindowBasket.baml
+C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\obj\Debug\Windows\WindowDish.g.cs
+C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\obj\Debug\Windows\WindowOrder.g.cs
+C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\obj\Debug\Windows\WindowDish.baml
+C:\Users\IMac9\source\repos\Tortuga_Lebedeva3ISP11-16\Tortuga_Lebedeva3ISP11-16\obj\Debug\Windows\WindowOrder.baml
