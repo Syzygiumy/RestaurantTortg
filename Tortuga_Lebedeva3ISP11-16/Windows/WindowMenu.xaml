@@ -81,11 +81,13 @@
                                     Grid.ColumnSpan="4" 
                                    Grid.Column="1" Margin="6,4,4,5"/>
 
-                        <TextBlock Text="Краткое описание" FontFamily="Century Gothic"
+                        <TextBlock Text="{Binding Description}" FontFamily="Century Gothic"
                                    FontSize="11" Foreground="#FF5B5A5A" 
                                    Grid.ColumnSpan="4"
                                    Grid.Column="1" 
-                                   Grid.Row="1" Margin="4,3,7,3" Width="Auto" Height="Auto"/>
+                                   Grid.Row="1" Margin="4,3,7,3" Width="Auto" 
+                                   Height="Auto"
+                                   TextWrapping="WrapWithOverflow"/>
 
                         <TextBlock Text="Время приготовления:" 
                    FontFamily="Century Gothic" FontSize="10" 
@@ -121,15 +123,13 @@
                                 <ImageBrush ImageSource="/Images/20079-ed4_wide.jpg" Stretch="UniformToFill"/>
                             </Ellipse.Fill>
                         </Ellipse>
-                        
-                        <Button Grid.Column="1"
-                                Grid.ColumnSpan="4" Opacity="0"
+
+                        <Button Grid.Column="0"
+                                Grid.ColumnSpan="5"
+                                Opacity="0"
+                                Grid.RowSpan="3"
                                 x:Name="Dtn_Dish1"
                                 Click="Dtn_Dish1_Click"/>
-                        
-                        <Button Grid.RowSpan="3" Opacity="0"
-                                 x:Name="Dtn_Dish2"
-                                Click="Dtn_Dish2_Click"/>
 
                         <Button Grid.Column="3"
                                 Grid.Row="3"
@@ -245,9 +245,70 @@
                 HorizontalAlignment="Right" 
                 Margin="0,106,27,0"
                 x:Name="Btn_Backet"
-                Click="Btn_Backet_Click" Opacity="0">
-        </Button>
+                Click="Btn_Backet_Click" Opacity="0"/>
 
+        <Button BorderThickness="0"
+                Width="337"
+                Height="56"
+                Grid.Row="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,14"
+                x:Name="btn_Cat1"/>
+
+        <Button BorderThickness="0"
+                Width="337"
+                Height="56"
+                Grid.Row="2"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,9"
+                x:Name="btn_Cat2"/>
+
+        <Button BorderThickness="0"
+                Width="337"
+                Height="56"
+                Grid.Row="3"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,8"
+                x:Name="btn_Cat3"/>
+        
+        <Button BorderThickness="0"
+                Width="337"
+                Height="56"
+                Grid.Row="4"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,8"
+                x:Name="btn_Cat4"/>
+
+        <Button BorderThickness="0"
+                Width="337"
+                Height="56"
+                Grid.Row="5"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,9"
+                x:Name="btn_Cat5"/>
+
+        <Button BorderThickness="0"
+                Width="337"
+                Height="56"
+                Grid.Row="6"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,5"
+                x:Name="btn_Cat6"/>
+
+        <Button BorderThickness="0"
+                Width="337"
+                Height="56"
+                Grid.Row="7"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,3"
+                x:Name="btn_Cat7"/>
         <!-- Кнопки -->
 
 

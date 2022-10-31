@@ -62,6 +62,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left" Margin="0,0,0,1"
                 Content="1" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
+                Opacity="0"
                 Click="Btn_1_Click"/>
 
         <Button x:Name="Btn_2"
@@ -72,7 +73,8 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left" Margin="1,0,0,1"
                 Content="2" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_2_Click"/>
+                Click="Btn_2_Click"
+                Opacity="0"/>
 
         <Button x:Name="Btn_3"
                 Grid.Column="1"
@@ -83,7 +85,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left" Margin="0,0,0,1"
                 Content="3" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_3_Click"/>
+                Click="Btn_3_Click" Opacity="0"/>
 
         <Button x:Name="Btn_4"
                 Grid.Column="4"
@@ -93,7 +95,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left" Margin="1,0,0,3"
                 Content="4" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_4_Click"/>
+                Click="Btn_4_Click" Opacity="0"/>
 
         <Button x:Name="Btn_5"
                 Grid.Column="2"
@@ -104,7 +106,7 @@
                 HorizontalAlignment="Left" Margin="1,0,0,1"
                 Content="5" FontSize="36" FontFamily="Sylfaen"
                 Background="#FFC5AE81"
-                Click="Btn_5_Click"/>
+                Click="Btn_5_Click" Opacity="0"/>
 
         <Button x:Name="Btn_6"
                 Grid.Column="4"
@@ -115,7 +117,7 @@
                 HorizontalAlignment="Left" Margin="2,0,0,1"
                 Content="6" FontSize="36" FontFamily="Sylfaen"
                 Background="#FFC5AE81"
-                Click="Btn_6_Click"/>
+                Click="Btn_6_Click" Opacity="0"/>
 
         <Button x:Name="Btn_7"
                 Grid.Column="2"
@@ -126,7 +128,7 @@
                 HorizontalAlignment="Left" Margin="1,0,0,2"
                 Content="7" FontSize="36" FontFamily="Sylfaen"
                 Background="#FFC5AE81"
-                Click="Btn_7_Click"/>
+                Click="Btn_7_Click" Opacity="0"/>
 
         <Button x:Name="Btn_8"
                 Grid.Column="4"
@@ -137,7 +139,7 @@
                 HorizontalAlignment="Left" Margin="2,0,0,2"
                 Content="8" FontSize="36" FontFamily="Sylfaen"
                 Background="#FFC5AE81"
-                Click="Btn_8_Click"/>
+                Click="Btn_8_Click" Opacity="0"/>
 
         <Button x:Name="Btn_9"
                 Grid.Column="2"
@@ -148,7 +150,7 @@
                 HorizontalAlignment="Left" Margin="2,0,0,3"
                 Content="9" FontSize="36" FontFamily="Sylfaen"
                 Background="#FFC5AE81"
-                Click="Btn_9_Click"/>
+                Click="Btn_9_Click" Opacity="0"/>
 
         <Button x:Name="Btn_10"
                 Grid.Column="4"
@@ -159,7 +161,7 @@
                 HorizontalAlignment="Left" Margin="2,0,0,3"
                 Content="10" FontSize="36" FontFamily="Sylfaen"
                 Background="#FFC5AE81"
-                Click="Btn_10_Click"/>
+                Click="Btn_10_Click" Opacity="0"/>
 
         <Button x:Name="Btn_11"
                 Grid.Column="5"
@@ -169,7 +171,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left" Margin="130,0,0,79" Grid.RowSpan="2"
                 Content="11" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_11_Click"/>
+                Click="Btn_11_Click" Opacity="0"/>
 
         <Button x:Name="Btn_12"
                 Grid.Column="7"
@@ -179,7 +181,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left" Margin="24,0,0,79" Grid.RowSpan="2"
                 Content="12" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_12_Click"/>
+                Click="Btn_12_Click" Opacity="0"/>
         
         <Button x:Name="Btn_13"
                 Grid.Column="6"
@@ -189,7 +191,7 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center" Margin="-2,138,0,0" Grid.RowSpan="2"
                 Content="13" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_13_Click"/>
+                Click="Btn_13_Click" Opacity="0"/>
 
         <Button x:Name="Btn_14"
                 Grid.Column="6"
@@ -200,7 +202,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-2,161,0,0" 
                 Content="14" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_14_Click"/>
+                Click="Btn_14_Click" Opacity="0"/>
 
         <Button x:Name="Btn_15"
                 Grid.Column="8"
@@ -211,7 +213,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-3,0,0,-175"
                 Content="15" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_15_Click"/>
+                Click="Btn_15_Click" Opacity="0"/>
 
         <Button x:Name="Btn_16"
                 Grid.Column="10"
@@ -222,7 +224,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-1,0,0,-175"
                 Content="16" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_16_Click"/>
+                Click="Btn_16_Click" Opacity="0"/>
 
         <Button x:Name="Btn_17"
                 Grid.Column="12"
@@ -233,7 +235,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-2,0,0,-175"
                 Content="17" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_17_Click"/>
+                Click="Btn_17_Click" Opacity="0"/>
 
         <Button x:Name="Btn_18"
                 Grid.Column="14"
@@ -244,7 +246,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-3,0,0,-175"
                 Content="18" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_18_Click"/>
+                Click="Btn_18_Click" Opacity="0"/>
 
         <Button x:Name="Btn_19"
                 Grid.Column="8"
@@ -266,7 +268,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-1,0,0,-51"
                 Content="20" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_20_Click"/>
+                Click="Btn_20_Click" Opacity="0"/>
 
         <Button x:Name="Btn_21"
                 Grid.Column="12"
@@ -277,7 +279,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-2,0,0,-51"
                 Content="21" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_21_Click"/>
+                Click="Btn_21_Click" Opacity="0"/>
 
         <Button x:Name="Btn_22"
                 Grid.Column="14"
@@ -288,7 +290,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-3,0,0,-51"
                 Content="22" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_22_Click"/>
+                Click="Btn_22_Click" Opacity="0"/>
 
         <Button x:Name="Btn_23"
                 Grid.Column="8"
@@ -300,7 +302,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-18,20,0,0"
                 Content="23" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_23_Click"/>
+                Click="Btn_23_Click" Opacity="0"/>
 
         <Button x:Name="Btn_24"
                 Grid.Column="12"
@@ -312,6 +314,6 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center" Margin="-2,20,0,0"
                 Content="24" FontSize="36" FontFamily="Sylfaen" Background="#FFC5AE81"
-                Click="Btn_24_Click"/>
+                Click="Btn_24_Click" Opacity="0"/>
     </Grid>
 </Window>

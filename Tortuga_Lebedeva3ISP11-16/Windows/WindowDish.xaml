@@ -34,21 +34,32 @@
         </Grid.RowDefinitions>
         <Image Source="/Images/Окно подробности блюда.jpg" Grid.RowSpan="4" Grid.ColumnSpan="2" />
 
-        <TextBlock Text="Название блюда" FontFamily="Century Gothic"
-                                   FontSize="29"
+        <TextBlock Text="{Binding Menu.Name}" 
+                   FontFamily="Century Gothic"
+                   FontSize="29"
                    Grid.Column="1"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
+                   x:Name="tbl_Name"
                    TextWrapping="Wrap" Margin="0,-25,0,0"/>
 
-        <TextBlock Text="Полное описание" 
+        <TextBlock Text="{Binding Menu.Description}" 
                    FontFamily="Century Gothic"
                    FontSize="24" Foreground="#FF5B5A5A" 
                    Grid.ColumnSpan="4"
                    Grid.Column="1" 
                    Grid.Row="1"
                    Grid.RowSpan="2"
-                   TextWrapping="Wrap" Width="482" Margin="-11,0,0,0"/>
+                   TextWrapping="Wrap" Width="482" Margin="-11,0,0,0"
+                   x:Name="tbl_Descr"/>
+
+        <TextBlock Text="{Binding MenuIngredient.Ingredient1}" 
+                   FontFamily="Century Gothic"
+                   FontSize="24" Foreground="#FF5B5A5A"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   TextWrapping="Wrap" Width="300" Height="166" Margin="14,21,0,0"
+                   x:Name="tbl_MenuIng1"/>
 
         <Button Style="{DynamicResource ButtonStyle1}" Grid.Column="2"
                 Grid.Row="4"

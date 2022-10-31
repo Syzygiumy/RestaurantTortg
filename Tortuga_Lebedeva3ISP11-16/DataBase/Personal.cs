@@ -28,8 +28,8 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
         public int PositionID { get; set; }
         public Nullable<int> Salary { get; set; }
     
-        public virtual Position Position { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
+        public virtual Position Position { get; set; }
     }
 }

@@ -11,7 +11,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="Menu">
@@ -20,7 +20,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="Quantity" Type="int" />
+    <Property Name="Size" Type="int" />
     <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="PreparingTimeMin" Type="int" />
     <Property Name="Photo" Type="nvarchar" MaxLength="1000" />
@@ -32,7 +32,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MenuID" Type="int" Nullable="false" />
     <Property Name="Ingredient1ID" Type="int" />
     <Property Name="Ingredient2ID" Type="int" />
@@ -46,20 +46,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="OrderClientID" Type="int" Nullable="false" />
+    <Property Name="OrderMenuID" Type="int" Nullable="false" />
     <Property Name="PersonalID" Type="int" Nullable="false" />
     <Property Name="OrderTime" Type="date" Nullable="false" />
-    <Property Name="SumCost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="StatusID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="OrderClient">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="OrderMenuID" Type="int" />
-    <Property Name="TableID" Type="int" />
-    <Property Name="SumCost" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="OrderMenu">
     <Key>
@@ -67,7 +57,10 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MenuID" Type="int" Nullable="false" />
+    <Property Name="TableID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="SumCost" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="Personal">
     <Key>
@@ -92,7 +85,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -220,15 +213,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_OrderClient">
-    <End Role="OrderClient" Type="Self.OrderClient" Multiplicity="1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+  <Association Name="FK_Order_OrderMenu">
+    <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="OrderClient">
+      <Principal Role="OrderMenu">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Order">
-        <PropertyRef Name="OrderClientID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -256,30 +249,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_OrderClient_OrderMenu">
-    <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="0..1" />
-    <End Role="OrderClient" Type="Self.OrderClient" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderMenu">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OrderClient">
-        <PropertyRef Name="OrderMenuID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderClient_Table">
-    <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
-    <End Role="OrderClient" Type="Self.OrderClient" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Table">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OrderClient">
-        <PropertyRef Name="TableID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_OrderMenu_Menu">
     <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
     <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
@@ -289,6 +258,18 @@
       </Principal>
       <Dependent Role="OrderMenu">
         <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderMenu_Order">
+    <End Role="Table" Type="Self.Table" Multiplicity="1" />
+    <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderMenu">
+        <PropertyRef Name="TableID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -341,7 +322,6 @@
     <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MenuIngredient" EntityType="Self.MenuIngredient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OrderClient" EntityType="Self.OrderClient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderMenu" EntityType="Self.OrderMenu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
@@ -384,8 +364,8 @@
       <End Role="Menu" EntitySet="Menu" />
       <End Role="MenuIngredient" EntitySet="MenuIngredient" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_OrderClient" Association="Self.FK_Order_OrderClient">
-      <End Role="OrderClient" EntitySet="OrderClient" />
+    <AssociationSet Name="FK_Order_OrderMenu" Association="Self.FK_Order_OrderMenu">
+      <End Role="OrderMenu" EntitySet="OrderMenu" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
     <AssociationSet Name="FK_Order_Personal" Association="Self.FK_Order_Personal">
@@ -396,16 +376,12 @@
       <End Role="Status" EntitySet="Status" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
-    <AssociationSet Name="FK_OrderClient_OrderMenu" Association="Self.FK_OrderClient_OrderMenu">
-      <End Role="OrderMenu" EntitySet="OrderMenu" />
-      <End Role="OrderClient" EntitySet="OrderClient" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderClient_Table" Association="Self.FK_OrderClient_Table">
-      <End Role="Table" EntitySet="Table" />
-      <End Role="OrderClient" EntitySet="OrderClient" />
-    </AssociationSet>
     <AssociationSet Name="FK_OrderMenu_Menu" Association="Self.FK_OrderMenu_Menu">
       <End Role="Menu" EntitySet="Menu" />
+      <End Role="OrderMenu" EntitySet="OrderMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">
+      <End Role="Table" EntitySet="Table" />
       <End Role="OrderMenu" EntitySet="OrderMenu" />
     </AssociationSet>
     <AssociationSet Name="FK_Personal_Position" Association="Self.FK_Personal_Position">

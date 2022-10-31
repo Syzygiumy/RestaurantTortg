@@ -95,9 +95,6 @@
     <Compile Include="DataBase\Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\OrderClient.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataBase\OrderMenu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -229,6 +226,20 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\Роллы.jpg" />
+    <Resource Include="Images\ГорячиеБлюда.jpg" />
+    <Resource Include="Images\ГорячиеБлюдаВыбрано.jpg" />
+    <Resource Include="Images\ГорячиеЗакуски.jpg" />
+    <Resource Include="Images\ГорячиеЗакускиВыбрано.jpg" />
+    <Resource Include="Images\Десерты.jpg" />
+    <Resource Include="Images\ДесертыВыбрано.jpg" />
+    <Resource Include="Images\РоллыВыбрано.jpg" />
+    <Resource Include="Images\Супы.jpg" />
+    <Resource Include="Images\СупыВыбрано.jpg" />
+    <Resource Include="Images\Суши.jpg" />
+    <Resource Include="Images\СушиВыбрано.jpg" />
+    <Resource Include="Images\ХолодныеЗакуски.jpg" />
+    <Resource Include="Images\ХолодныеЗакускиВыбрано.jpg" />
     <Resource Include="Images\Окно заказа.jpg" />
     <Resource Include="Images\Окно подробности блюда.jpg" />
     <Resource Include="Images\Корзина2.jpg" />

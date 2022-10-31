@@ -23,7 +23,7 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Quantity { get; set; }
+        public Nullable<int> Size { get; set; }
         public decimal Cost { get; set; }
         public Nullable<int> PreparingTimeMin { get; set; }
         public string Photo { get; set; }

@@ -17,13 +17,13 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Table()
         {
-            this.OrderClient = new HashSet<OrderClient>();
+            this.OrderMenu = new HashSet<OrderMenu>();
         }
     
         public int ID { get; set; }
         public Nullable<int> TableNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderClient> OrderClient { get; set; }
+        public virtual ICollection<OrderMenu> OrderMenu { get; set; }
     }
 }

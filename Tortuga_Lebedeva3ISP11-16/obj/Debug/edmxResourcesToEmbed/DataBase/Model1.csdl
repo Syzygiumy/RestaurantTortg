@@ -1,55 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Personal">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Patronymic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="PositionID" Type="Int32" Nullable="false" />
-    <Property Name="Salary" Type="Int32" />
-    <NavigationProperty Name="Position" Relationship="Self.FK_Personal_Position" FromRole="Personal" ToRole="Position" />
-    <NavigationProperty Name="Order" Relationship="Model.FK_Order_Personal" FromRole="Personal" ToRole="Order" />
-  </EntityType>
-  <EntityType Name="Position">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_Position" FromRole="Position" ToRole="Personal" />
-  </EntityType>
-  <EntityType Name="Table">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TableNumber" Type="Int32" />
-    <NavigationProperty Name="OrderClient" Relationship="Model.FK_OrderClient_Table" FromRole="Table" ToRole="OrderClient" />
-  </EntityType>
-  <Association Name="FK_Personal_Position">
-    <End Role="Position" Type="Self.Position" Multiplicity="1" />
-    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Position">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Personal">
-        <PropertyRef Name="PositionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="TortugaEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Personal" EntityType="Self.Personal" />
-    <EntitySet Name="Position" EntityType="Self.Position" />
-    <EntitySet Name="Table" EntityType="Self.Table" />
-    <AssociationSet Name="FK_Personal_Position" Association="Self.FK_Personal_Position">
-      <End Role="Position" EntitySet="Position" />
-      <End Role="Personal" EntitySet="Personal" />
-    </AssociationSet>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -85,10 +36,12 @@
     <EntitySet Name="Menu" EntityType="Model.Menu" />
     <EntitySet Name="MenuIngredient" EntityType="Model.MenuIngredient" />
     <EntitySet Name="Order" EntityType="Model.Order" />
-    <EntitySet Name="OrderClient" EntityType="Model.OrderClient" />
     <EntitySet Name="OrderMenu" EntityType="Model.OrderMenu" />
+    <EntitySet Name="Personal" EntityType="Model.Personal" />
+    <EntitySet Name="Position" EntityType="Model.Position" />
     <EntitySet Name="Status" EntityType="Model.Status" />
     <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
+    <EntitySet Name="Table" EntityType="Model.Table" />
     <AssociationSet Name="FK_Menu_Category" Association="Model.FK_Menu_Category">
       <End Role="Category" EntitySet="Category" />
       <End Role="Menu" EntitySet="Menu" />
@@ -129,8 +82,8 @@
       <End Role="Menu" EntitySet="Menu" />
       <End Role="OrderMenu" EntitySet="OrderMenu" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_OrderClient" Association="Model.FK_Order_OrderClient">
-      <End Role="OrderClient" EntitySet="OrderClient" />
+    <AssociationSet Name="FK_Order_OrderMenu" Association="Model.FK_Order_OrderMenu">
+      <End Role="OrderMenu" EntitySet="OrderMenu" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
     <AssociationSet Name="FK_Order_Personal" Association="Model.FK_Order_Personal">
@@ -141,13 +94,13 @@
       <End Role="Status" EntitySet="Status" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
-    <AssociationSet Name="FK_OrderClient_OrderMenu" Association="Model.FK_OrderClient_OrderMenu">
-      <End Role="OrderMenu" EntitySet="OrderMenu" />
-      <End Role="OrderClient" EntitySet="OrderClient" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderClient_Table" Association="Model.FK_OrderClient_Table">
+    <AssociationSet Name="FK_OrderMenu_Order" Association="Model.FK_OrderMenu_Order">
       <End Role="Table" EntitySet="Table" />
-      <End Role="OrderClient" EntitySet="OrderClient" />
+      <End Role="OrderMenu" EntitySet="OrderMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Position" Association="Model.FK_Personal_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Personal" EntitySet="Personal" />
     </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -173,7 +126,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="MenuIngredient" Relationship="Model.FK_MenuIngredient_Ingredient" FromRole="Ingredient" ToRole="MenuIngredient" />
     <NavigationProperty Name="MenuIngredient1" Relationship="Model.FK_MenuIngredient_Ingredient1" FromRole="Ingredient" ToRole="MenuIngredient" />
@@ -188,7 +141,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Size" Type="Int32" />
     <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="PreparingTimeMin" Type="Int32" />
     <Property Name="Photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
@@ -204,7 +157,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MenuID" Type="Int32" Nullable="false" />
     <Property Name="Ingredient1ID" Type="Int32" />
     <Property Name="Ingredient2ID" Type="Int32" />
@@ -226,26 +179,13 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="OrderClientID" Type="Int32" Nullable="false" />
+    <Property Name="OrderMenuID" Type="Int32" Nullable="false" />
     <Property Name="PersonalID" Type="Int32" Nullable="false" />
     <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="SumCost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="StatusID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="OrderClient" Relationship="Model.FK_Order_OrderClient" FromRole="Order" ToRole="OrderClient" />
+    <NavigationProperty Name="OrderMenu" Relationship="Model.FK_Order_OrderMenu" FromRole="Order" ToRole="OrderMenu" />
     <NavigationProperty Name="Personal" Relationship="Model.FK_Order_Personal" FromRole="Order" ToRole="Personal" />
     <NavigationProperty Name="Status" Relationship="Model.FK_Order_Status" FromRole="Order" ToRole="Status" />
-  </EntityType>
-  <EntityType Name="OrderClient">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="OrderMenuID" Type="Int32" />
-    <Property Name="TableID" Type="Int32" />
-    <Property Name="SumCost" Type="Decimal" Precision="10" Scale="2" />
-    <NavigationProperty Name="Order" Relationship="Model.FK_Order_OrderClient" FromRole="OrderClient" ToRole="Order" />
-    <NavigationProperty Name="OrderMenu" Relationship="Model.FK_OrderClient_OrderMenu" FromRole="OrderClient" ToRole="OrderMenu" />
-    <NavigationProperty Name="Table" Relationship="Model.FK_OrderClient_Table" FromRole="OrderClient" ToRole="Table" />
   </EntityType>
   <EntityType Name="OrderMenu">
     <Key>
@@ -253,15 +193,41 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MenuID" Type="Int32" Nullable="false" />
+    <Property Name="TableID" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="SumCost" Type="Decimal" Precision="10" Scale="2" />
     <NavigationProperty Name="Menu" Relationship="Model.FK_OrderMenu_Menu" FromRole="OrderMenu" ToRole="Menu" />
-    <NavigationProperty Name="OrderClient" Relationship="Model.FK_OrderClient_OrderMenu" FromRole="OrderMenu" ToRole="OrderClient" />
+    <NavigationProperty Name="Order" Relationship="Model.FK_Order_OrderMenu" FromRole="OrderMenu" ToRole="Order" />
+    <NavigationProperty Name="Table" Relationship="Model.FK_OrderMenu_Order" FromRole="OrderMenu" ToRole="Table" />
+  </EntityType>
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="PositionID" Type="Int32" Nullable="false" />
+    <Property Name="Salary" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="Model.FK_Order_Personal" FromRole="Personal" ToRole="Order" />
+    <NavigationProperty Name="Position" Relationship="Model.FK_Personal_Position" FromRole="Personal" ToRole="Position" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Personal" Relationship="Model.FK_Personal_Position" FromRole="Position" ToRole="Personal" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Order" Relationship="Model.FK_Order_Status" FromRole="Status" ToRole="Order" />
   </EntityType>
@@ -274,6 +240,14 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableNumber" Type="Int32" />
+    <NavigationProperty Name="OrderMenu" Relationship="Model.FK_OrderMenu_Order" FromRole="Table" ToRole="OrderMenu" />
   </EntityType>
   <Association Name="FK_Menu_Category">
     <End Type="Model.Category" Role="Category" Multiplicity="1" />
@@ -395,15 +369,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_OrderClient">
-    <End Type="Model.OrderClient" Role="OrderClient" Multiplicity="1" />
-    <End Type="Model.Order" Role="Order" Multiplicity="*" />
+  <Association Name="FK_Order_OrderMenu">
+    <End Type="Model.OrderMenu" Role="OrderMenu" Multiplicity="1" />
+    <End Type="Model.Order" Role="Order" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="OrderClient">
+      <Principal Role="OrderMenu">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Order">
-        <PropertyRef Name="OrderClientID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -431,27 +405,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_OrderClient_OrderMenu">
-    <End Type="Model.OrderMenu" Role="OrderMenu" Multiplicity="0..1" />
-    <End Type="Model.OrderClient" Role="OrderClient" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderMenu">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OrderClient">
-        <PropertyRef Name="OrderMenuID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderClient_Table">
-    <End Type="Model.Table" Role="Table" Multiplicity="0..1" />
-    <End Type="Model.OrderClient" Role="OrderClient" Multiplicity="*" />
+  <Association Name="FK_OrderMenu_Order">
+    <End Type="Model.Table" Role="Table" Multiplicity="1" />
+    <End Type="Model.OrderMenu" Role="OrderMenu" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Table">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="OrderClient">
+      <Dependent Role="OrderMenu">
         <PropertyRef Name="TableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Position">
+    <End Type="Model.Position" Role="Position" Multiplicity="1" />
+    <End Type="Model.Personal" Role="Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="PositionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

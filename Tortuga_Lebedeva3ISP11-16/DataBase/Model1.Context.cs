@@ -27,18 +27,17 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Personal> Personal { get; set; }
-        public virtual DbSet<Position> Position { get; set; }
-        public virtual DbSet<Table> Table { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Ingredient> Ingredient { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<MenuIngredient> MenuIngredient { get; set; }
         public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<OrderClient> OrderClient { get; set; }
         public virtual DbSet<OrderMenu> OrderMenu { get; set; }
+        public virtual DbSet<Personal> Personal { get; set; }
+        public virtual DbSet<Position> Position { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Table> Table { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
