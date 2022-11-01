@@ -51,8 +51,8 @@
                         </Grid.Background>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="115*"/>
-                            <ColumnDefinition Width="84*"/>
-                            <ColumnDefinition Width="27*"/>
+                            <ColumnDefinition Width="81*"/>
+                            <ColumnDefinition Width="30*"/>
                             <ColumnDefinition Width="115*"/>
                             <ColumnDefinition Width="40*"/>
                         </Grid.ColumnDefinitions>
@@ -72,16 +72,14 @@
                                    FontFamily="Century Gothic" 
                                    FontSize="17" 
                                    Foreground="Black" 
-                                   Grid.Row="3"
-                                   Width="79"
-                                   HorizontalAlignment="Left" Margin="26,5,0,5"/>
+                                   Grid.Row="3" Margin="31,5,5,5"/>
 
                         <TextBlock Text="{Binding Name}" FontFamily="Century Gothic"
                                    FontSize="14"
                                     Grid.ColumnSpan="4" 
                                    Grid.Column="1" Margin="6,4,4,5"/>
 
-                        <TextBlock Text="{Binding Description}" FontFamily="Century Gothic"
+                        <TextBlock Text="{Binding GetDescription}" FontFamily="Century Gothic"
                                    FontSize="11" Foreground="#FF5B5A5A" 
                                    Grid.ColumnSpan="4"
                                    Grid.Column="1" 
@@ -97,13 +95,13 @@
                         <TextBlock Text="Кол-во порций:" FontFamily="Century Gothic" FontSize="10" 
                    Foreground="#FF8D7B58" 
                    Grid.Column="1" 
-                   Grid.Row="2" Margin="2,2,6,2"/>
+                   Grid.Row="2" Margin="2,2,28,2" Grid.ColumnSpan="2"/>
 
                         <TextBlock Text="Заказать" FontFamily="Century Gothic" Grid.Column="3" 
                    Grid.Row="3" Foreground="White"
                    FontSize="18" Grid.ColumnSpan="2" Margin="52,4,8,4"/>
 
-                        <TextBlock Text="{Binding Quantity}" FontFamily="Century Gothic" FontSize="11" 
+                        <TextBlock Text="{Binding Size}" FontFamily="Century Gothic" FontSize="11" 
                    Foreground="#FF8D7B58"
                    Grid.Column="2" Grid.Row="2" TextAlignment="Center" Margin="1,2,0,2"/>
 
@@ -133,8 +131,8 @@
 
                         <Button Grid.Column="3"
                                 Grid.Row="3"
-                                Grid.ColumnSpan="2" Width="143" 
-                                Margin="6,0,0,0" Opacity="0"
+                                Grid.ColumnSpan="2" Width="Auto" 
+                                Margin="9,0,3,0" Opacity="0"
                                  x:Name="Dtn_Order"
                                 Click="Dtn_Order_Click"/>
 
@@ -236,7 +234,137 @@
         <!-- Вьюшка -->
 
 
-        <!-- Кнопки -->
+        <!-- ~~~~~~~~~~~~~~~~~~Иконки~~~~~~~~~~~~~~~~~~~~ -->
+        <Image Source="/Images/ГорячиеЗакуски.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,14" 
+               x:Name="Img_GorZakOff"/>
+
+        <Image Source="/Images/ГорячиеЗакускиВыбрано.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="100" Margin="10,0,0,14"
+                x:Name="Img_GorZakOn"/>
+
+        <Image Source="/Images/ХолодныеЗакуски.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="2"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="100" Margin="10,0,0,9"
+                x:Name="Img_HolZakOff"/>
+
+        <Image Source="/Images/ХолодныеЗакускиВыбрано.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="2"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,9"
+                x:Name="Img_HolZakOn"/>
+
+        <Image Source="/Images/Суши.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="3"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="100" Margin="10,0,0,8"
+                x:Name="Img_SushiOff"/>
+
+        <Image Source="/Images/СушиВыбрано.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="3"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,8"
+                x:Name="Img_SushiOn"/>
+
+        <Image Source="/Images/Роллы.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="4"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="100" Margin="10,0,0,8"
+                x:Name="Img_RolliOff"/>
+
+        <Image Source="/Images/РоллыВыбрано.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="4"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,8"
+                x:Name="Img_RolliOn"/>
+
+        <Image Source="/Images/Супы.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="5"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="100" Margin="10,0,0,9" 
+                x:Name="Img_SoupOff"/>
+
+        <Image Source="/Images/СупыВыбрано.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="5"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,9"
+                x:Name="Img_SoupOn"/>
+
+        <Image Source="/Images/ГорячиеБлюда.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="6"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="100" Margin="10,0,0,5"
+                x:Name="Img_HotDishOff"
+                />
+
+        <Image Source="/Images/ГорячиеБлюдаВыбрано.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="6"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,5"
+                x:Name="Img_HotDishOn"/>
+
+        <Image Source="/Images/Десерты.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="7"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="100" Margin="10,0,0,3"
+                x:Name="Img_DessertOff"/>
+
+        <Image Source="/Images/ДесертыВыбрано.jpg"
+                Width="355"
+                Height="60"
+                Grid.Row="7"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Opacity="0" Margin="10,0,0,3"
+                x:Name="Img_DessertOn"/>
+
+        <!-- ~~~~~~~~~~~~~~~~~~Иконки~~~~~~~~~~~~~~~~~~~~ -->
+
+        <!-- ~~~~~~~~~~~~~~~~~~Кнопки~~~~~~~~~~~~~~~~~~~~ -->
         <Button BorderThickness="0"
                 Grid.RowSpan="2"
                 Width="91"
@@ -245,7 +373,8 @@
                 HorizontalAlignment="Right" 
                 Margin="0,106,27,0"
                 x:Name="Btn_Backet"
-                Click="Btn_Backet_Click" Opacity="0"/>
+                Click="Btn_Backet_Click" 
+                Opacity="0"/>
 
         <Button BorderThickness="0"
                 Width="337"
@@ -254,7 +383,8 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 Opacity="0" Margin="10,0,0,14"
-                x:Name="btn_Cat1"/>
+                x:Name="btn_Cat1"
+                Click="btn_Cat_Click"/>
 
         <Button BorderThickness="0"
                 Width="337"
@@ -263,7 +393,8 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 Opacity="0" Margin="10,0,0,9"
-                x:Name="btn_Cat2"/>
+                x:Name="btn_Cat2"
+                Click="btn_Cat_Click"/>
 
         <Button BorderThickness="0"
                 Width="337"
@@ -272,8 +403,9 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 Opacity="0" Margin="10,0,0,8"
-                x:Name="btn_Cat3"/>
-        
+                x:Name="btn_Cat3"
+                Click="btn_Cat_Click"/>
+
         <Button BorderThickness="0"
                 Width="337"
                 Height="56"
@@ -281,7 +413,8 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 Opacity="0" Margin="10,0,0,8"
-                x:Name="btn_Cat4"/>
+                x:Name="btn_Cat4"
+                Click="btn_Cat_Click"/>
 
         <Button BorderThickness="0"
                 Width="337"
@@ -290,7 +423,8 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 Opacity="0" Margin="10,0,0,9"
-                x:Name="btn_Cat5"/>
+                x:Name="btn_Cat5"
+                Click="btn_Cat_Click"/>
 
         <Button BorderThickness="0"
                 Width="337"
@@ -299,7 +433,8 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 Opacity="0" Margin="10,0,0,5"
-                x:Name="btn_Cat6"/>
+                x:Name="btn_Cat6"
+                Click="btn_Cat_Click"/>
 
         <Button BorderThickness="0"
                 Width="337"
@@ -308,8 +443,10 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 Opacity="0" Margin="10,0,0,3"
-                x:Name="btn_Cat7"/>
-        <!-- Кнопки -->
+                x:Name="btn_Cat7"
+                Click="btn_Cat_Click"/>
+        <!-- ~~~~~~~~~~~~~~~~~~Кнопки~~~~~~~~~~~~~~~~~~~~ -->
+
 
 
     </Grid>

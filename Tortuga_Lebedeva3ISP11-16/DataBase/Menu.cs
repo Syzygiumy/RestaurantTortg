@@ -28,6 +28,18 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
         public Nullable<int> PreparingTimeMin { get; set; }
         public string Photo { get; set; }
         public string Description { get; set; }
+        public string GetDescription
+        {
+            get 
+                {
+                if (true)
+                {
+                    return Description;
+                }
+               
+                }
+
+        }
         public int CategoryID { get; set; }
         public Nullable<int> MenuIngredientID { get; set; }
     

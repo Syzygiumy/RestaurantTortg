@@ -21,6 +21,8 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
     {
         List<DataBase.Menu> listMenu = new List<DataBase.Menu>();
 
+        private int catID;
+
         public WindowMenu()
         {
             InitializeComponent();
@@ -31,7 +33,13 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
         {
 
             lv_Menu.ItemsSource = ClassHelper.AppData.context.Menu.ToList();
-            //lv_Menu.ItemsSource = ClassHelper.AppData.context.Menu.ToList().Where(i => i.CategoryID == numberCat).ToList();
+        }
+        private void GetProductList(int catID)
+        {
+
+            lv_Menu.ItemsSource = ClassHelper.AppData.context.Menu.Where(i => i.CategoryID == catID).ToList();
+
+
         }
 
         private void Btn_Backet_Click(object sender, RoutedEventArgs e)
@@ -55,6 +63,19 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
             this.Opacity = 0.2;
             orderWindow.ShowDialog();
             this.Opacity = 1;
+        }
+
+        private void btn_Cat_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            if (btn == null)
+            {
+                return;
+            }
+
+            catID = Int32.Parse(btn.Name.Substring(btn.Name.Length - 1));
+            
+            GetProductList(catID);
         }
     }
 }
