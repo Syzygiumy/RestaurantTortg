@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="80074c5411e0499ab890c94969c4a8dd" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="1.5" PointY="11.25" />
+        <EntityTypeShape EntityType="Model.DishMenu" Width="1.5" PointX="0.75" PointY="6.375" />
         <EntityTypeShape EntityType="Model.Ingredient" Width="1.5" PointX="0.75" PointY="1.75" />
-        <EntityTypeShape EntityType="Model.Menu" Width="1.5" PointX="0.75" PointY="6.375" />
         <EntityTypeShape EntityType="Model.MenuIngredient" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="5.25" PointY="6.75" />
         <EntityTypeShape EntityType="Model.OrderMenu" Width="1.5" PointX="3" PointY="6.75" />
@@ -17,15 +17,15 @@
         <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.Table" Width="1.5" PointX="0.75" PointY="14.25" />
         <AssociationConnector Association="Model.FK_Menu_Category" />
+        <AssociationConnector Association="Model.FK_MenuIngredient_Menu" />
+        <AssociationConnector Association="Model.FK_MenuIngredient_Menu1" />
+        <AssociationConnector Association="Model.FK_OrderMenu_Menu" />
         <AssociationConnector Association="Model.FK_MenuIngredient_Ingredient" />
         <AssociationConnector Association="Model.FK_MenuIngredient_Ingredient1" />
         <AssociationConnector Association="Model.FK_MenuIngredient_Ingredient2" />
         <AssociationConnector Association="Model.FK_MenuIngredient_Ingredient3" />
         <AssociationConnector Association="Model.FK_MenuIngredient_Ingredient4" />
         <AssociationConnector Association="Model.FK_MenuIngredient_Ingredient5" />
-        <AssociationConnector Association="Model.FK_MenuIngredient_Menu" />
-        <AssociationConnector Association="Model.FK_MenuIngredient_Menu1" />
-        <AssociationConnector Association="Model.FK_OrderMenu_Menu" />
         <AssociationConnector Association="Model.FK_Order_OrderMenu" />
         <AssociationConnector Association="Model.FK_Order_Personal" />
         <AssociationConnector Association="Model.FK_Order_Status" />

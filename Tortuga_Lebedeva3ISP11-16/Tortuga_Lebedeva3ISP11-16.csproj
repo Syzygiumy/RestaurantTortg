@@ -68,10 +68,10 @@
     <Compile Include="DataBase\Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\Ingredient.cs">
+    <Compile Include="DataBase\DishMenu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\Menu.cs">
+    <Compile Include="DataBase\Ingredient.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\MenuIngredient.cs">

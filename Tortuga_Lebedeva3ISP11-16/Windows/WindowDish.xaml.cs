@@ -20,7 +20,7 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
     public partial class WindowDish : Window
     {
 
-        List<DataBase.Menu> listMenu = new List<DataBase.Menu>();
+        List<DataBase.DishMenu> listMenu = new List<DataBase.DishMenu>();
 
         public WindowDish()
         {

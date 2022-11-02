@@ -24,6 +24,13 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
             InitializeComponent();
         }
 
+        public WindowOrder(DataBase.DishMenu dish)
+        {
+            InitializeComponent();
+
+            MessageBox.Show(dish.Name);
+        }
+
         private void Btn_Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

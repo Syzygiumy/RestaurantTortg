@@ -33,17 +33,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Ingredient">
-      <EntityTypeMapping TypeName="Model.Ingredient">
-        <MappingFragment StoreEntitySet="Ingredient">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Menu">
-      <EntityTypeMapping TypeName="Model.Menu">
-        <MappingFragment StoreEntitySet="Menu">
+    <EntitySetMapping Name="DishMenu">
+      <EntityTypeMapping TypeName="Model.DishMenu">
+        <MappingFragment StoreEntitySet="DishMenu">
           <ScalarProperty Name="MenuIngredientID" ColumnName="MenuIngredientID" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -51,6 +43,14 @@
           <ScalarProperty Name="PreparingTimeMin" ColumnName="PreparingTimeMin" />
           <ScalarProperty Name="Cost" ColumnName="Cost" />
           <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ingredient">
+      <EntityTypeMapping TypeName="Model.Ingredient">
+        <MappingFragment StoreEntitySet="Ingredient">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
@@ -65,7 +65,7 @@
           <ScalarProperty Name="Ingredient3ID" ColumnName="Ingredient3ID" />
           <ScalarProperty Name="Ingredient2ID" ColumnName="Ingredient2ID" />
           <ScalarProperty Name="Ingredient1ID" ColumnName="Ingredient1ID" />
-          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="DishMenuID" ColumnName="DishMenuID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -88,7 +88,7 @@
           <ScalarProperty Name="Cost" ColumnName="Cost" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="TableID" ColumnName="TableID" />
-          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="DishMenuID" ColumnName="DishMenuID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

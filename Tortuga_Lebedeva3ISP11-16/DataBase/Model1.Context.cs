@@ -28,8 +28,8 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
         }
     
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<DishMenu> DishMenu { get; set; }
         public virtual DbSet<Ingredient> Ingredient { get; set; }
-        public virtual DbSet<Menu> Menu { get; set; }
         public virtual DbSet<MenuIngredient> MenuIngredient { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderMenu> OrderMenu { get; set; }

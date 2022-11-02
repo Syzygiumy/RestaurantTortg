@@ -7,14 +7,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
   </EntityType>
-  <EntityType Name="Ingredient">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="150" />
-  </EntityType>
-  <EntityType Name="Menu">
+  <EntityType Name="DishMenu">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -28,12 +21,19 @@
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="MenuIngredientID" Type="int" />
   </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
   <EntityType Name="MenuIngredient">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MenuID" Type="int" Nullable="false" />
+    <Property Name="DishMenuID" Type="int" Nullable="false" />
     <Property Name="Ingredient1ID" Type="int" />
     <Property Name="Ingredient2ID" Type="int" />
     <Property Name="Ingredient3ID" Type="int" />
@@ -56,7 +56,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MenuID" Type="int" Nullable="false" />
+    <Property Name="DishMenuID" Type="int" Nullable="false" />
     <Property Name="TableID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
     <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
@@ -107,12 +107,12 @@
   </EntityType>
   <Association Name="FK_Menu_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
-    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <End Role="DishMenu" Type="Self.DishMenu" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Menu">
+      <Dependent Role="DishMenu">
         <PropertyRef Name="CategoryID" />
       </Dependent>
     </ReferentialConstraint>
@@ -190,10 +190,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_MenuIngredient_Menu">
-    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="DishMenu" Type="Self.DishMenu" Multiplicity="1" />
     <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="Menu">
+      <Principal Role="DishMenu">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="MenuIngredient">
@@ -202,14 +202,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_MenuIngredient_Menu1">
-    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="DishMenu" Type="Self.DishMenu" Multiplicity="1" />
     <End Role="MenuIngredient" Type="Self.MenuIngredient" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Menu">
+      <Principal Role="DishMenu">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="MenuIngredient">
-        <PropertyRef Name="MenuID" />
+        <PropertyRef Name="DishMenuID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -250,14 +250,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_OrderMenu_Menu">
-    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="DishMenu" Type="Self.DishMenu" Multiplicity="1" />
     <End Role="OrderMenu" Type="Self.OrderMenu" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Menu">
+      <Principal Role="DishMenu">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="OrderMenu">
-        <PropertyRef Name="MenuID" />
+        <PropertyRef Name="DishMenuID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -318,8 +318,8 @@
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="Хранилище ModelContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DishMenu" EntityType="Self.DishMenu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MenuIngredient" EntityType="Self.MenuIngredient" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderMenu" EntityType="Self.OrderMenu" Schema="dbo" store:Type="Tables" />
@@ -330,7 +330,7 @@
     <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Menu_Category" Association="Self.FK_Menu_Category">
       <End Role="Category" EntitySet="Category" />
-      <End Role="Menu" EntitySet="Menu" />
+      <End Role="DishMenu" EntitySet="DishMenu" />
     </AssociationSet>
     <AssociationSet Name="FK_MenuIngredient_Ingredient" Association="Self.FK_MenuIngredient_Ingredient">
       <End Role="Ingredient" EntitySet="Ingredient" />
@@ -357,11 +357,11 @@
       <End Role="MenuIngredient" EntitySet="MenuIngredient" />
     </AssociationSet>
     <AssociationSet Name="FK_MenuIngredient_Menu" Association="Self.FK_MenuIngredient_Menu">
-      <End Role="Menu" EntitySet="Menu" />
+      <End Role="DishMenu" EntitySet="DishMenu" />
       <End Role="MenuIngredient" EntitySet="MenuIngredient" />
     </AssociationSet>
     <AssociationSet Name="FK_MenuIngredient_Menu1" Association="Self.FK_MenuIngredient_Menu1">
-      <End Role="Menu" EntitySet="Menu" />
+      <End Role="DishMenu" EntitySet="DishMenu" />
       <End Role="MenuIngredient" EntitySet="MenuIngredient" />
     </AssociationSet>
     <AssociationSet Name="FK_Order_OrderMenu" Association="Self.FK_Order_OrderMenu">
@@ -377,7 +377,7 @@
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
     <AssociationSet Name="FK_OrderMenu_Menu" Association="Self.FK_OrderMenu_Menu">
-      <End Role="Menu" EntitySet="Menu" />
+      <End Role="DishMenu" EntitySet="DishMenu" />
       <End Role="OrderMenu" EntitySet="OrderMenu" />
     </AssociationSet>
     <AssociationSet Name="FK_OrderMenu_Order" Association="Self.FK_OrderMenu_Order">

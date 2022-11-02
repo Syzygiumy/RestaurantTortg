@@ -79,7 +79,7 @@
                                     Grid.ColumnSpan="4" 
                                    Grid.Column="1" Margin="6,4,4,5"/>
 
-                        <TextBlock Text="{Binding GetDescription}" FontFamily="Century Gothic"
+                        <TextBlock Text="{Binding Description}" FontFamily="Century Gothic"
                                    FontSize="11" Foreground="#FF5B5A5A" 
                                    Grid.ColumnSpan="4"
                                    Grid.Column="1" 
@@ -241,7 +241,7 @@
                 Grid.Row="1"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
-                Opacity="0" Margin="10,0,0,14" 
+                Opacity="100" Margin="10,0,0,14" 
                x:Name="Img_GorZakOff"/>
 
         <Image Source="/Images/ГорячиеЗакускиВыбрано.jpg"
@@ -250,7 +250,7 @@
                 Grid.Row="1"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
-                Opacity="100" Margin="10,0,0,14"
+                Opacity="0" Margin="10,0,0,14"
                 x:Name="Img_GorZakOn"/>
 
         <Image Source="/Images/ХолодныеЗакуски.jpg"
@@ -295,7 +295,7 @@
                 Grid.Row="4"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
-                Opacity="100" Margin="10,0,0,8"
+                Opacity="10" Margin="10,0,0,8"
                 x:Name="Img_RolliOff"/>
 
         <Image Source="/Images/РоллыВыбрано.jpg"

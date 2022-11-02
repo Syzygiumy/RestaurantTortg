@@ -12,10 +12,10 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Menu
+    public partial class DishMenu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Menu()
+        public DishMenu()
         {
             this.MenuIngredient1 = new HashSet<MenuIngredient>();
             this.OrderMenu = new HashSet<OrderMenu>();
@@ -28,18 +28,6 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
         public Nullable<int> PreparingTimeMin { get; set; }
         public string Photo { get; set; }
         public string Description { get; set; }
-        public string GetDescription
-        {
-            get 
-                {
-                if (true)
-                {
-                    return Description;
-                }
-               
-                }
-
-        }
         public int CategoryID { get; set; }
         public Nullable<int> MenuIngredientID { get; set; }
     

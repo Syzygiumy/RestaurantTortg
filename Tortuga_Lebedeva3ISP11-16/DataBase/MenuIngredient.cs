@@ -15,7 +15,7 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     public partial class MenuIngredient
     {
         public int ID { get; set; }
-        public int MenuID { get; set; }
+        public int DishMenuID { get; set; }
         public Nullable<int> Ingredient1ID { get; set; }
         public Nullable<int> Ingredient2ID { get; set; }
         public Nullable<int> Ingredient3ID { get; set; }
@@ -23,13 +23,13 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
         public Nullable<int> Ingredient5ID { get; set; }
         public Nullable<int> Ingredient6ID { get; set; }
     
+        public virtual DishMenu DishMenu { get; set; }
+        public virtual DishMenu DishMenu1 { get; set; }
         public virtual Ingredient Ingredient { get; set; }
         public virtual Ingredient Ingredient1 { get; set; }
         public virtual Ingredient Ingredient2 { get; set; }
         public virtual Ingredient Ingredient3 { get; set; }
         public virtual Ingredient Ingredient4 { get; set; }
         public virtual Ingredient Ingredient5 { get; set; }
-        public virtual Menu Menu { get; set; }
-        public virtual Menu Menu1 { get; set; }
     }
 }

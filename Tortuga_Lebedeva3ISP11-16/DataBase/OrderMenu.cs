@@ -15,13 +15,13 @@ namespace Tortuga_Lebedeva3ISP11_16.DataBase
     public partial class OrderMenu
     {
         public int ID { get; set; }
-        public int MenuID { get; set; }
+        public int DishMenuID { get; set; }
         public int TableID { get; set; }
         public int Quantity { get; set; }
         public decimal Cost { get; set; }
         public Nullable<decimal> SumCost { get; set; }
     
-        public virtual Menu Menu { get; set; }
+        public virtual DishMenu DishMenu { get; set; }
         public virtual Order Order { get; set; }
         public virtual Table Table { get; set; }
     }

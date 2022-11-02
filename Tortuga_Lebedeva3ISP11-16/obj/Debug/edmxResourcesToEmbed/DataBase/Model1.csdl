@@ -32,8 +32,8 @@
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
     <EntitySet Name="Category" EntityType="Model.Category" />
+    <EntitySet Name="DishMenu" EntityType="Model.DishMenu" />
     <EntitySet Name="Ingredient" EntityType="Model.Ingredient" />
-    <EntitySet Name="Menu" EntityType="Model.Menu" />
     <EntitySet Name="MenuIngredient" EntityType="Model.MenuIngredient" />
     <EntitySet Name="Order" EntityType="Model.Order" />
     <EntitySet Name="OrderMenu" EntityType="Model.OrderMenu" />
@@ -44,7 +44,19 @@
     <EntitySet Name="Table" EntityType="Model.Table" />
     <AssociationSet Name="FK_Menu_Category" Association="Model.FK_Menu_Category">
       <End Role="Category" EntitySet="Category" />
-      <End Role="Menu" EntitySet="Menu" />
+      <End Role="DishMenu" EntitySet="DishMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuIngredient_Menu" Association="Model.FK_MenuIngredient_Menu">
+      <End Role="DishMenu" EntitySet="DishMenu" />
+      <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuIngredient_Menu1" Association="Model.FK_MenuIngredient_Menu1">
+      <End Role="DishMenu" EntitySet="DishMenu" />
+      <End Role="MenuIngredient" EntitySet="MenuIngredient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderMenu_Menu" Association="Model.FK_OrderMenu_Menu">
+      <End Role="DishMenu" EntitySet="DishMenu" />
+      <End Role="OrderMenu" EntitySet="OrderMenu" />
     </AssociationSet>
     <AssociationSet Name="FK_MenuIngredient_Ingredient" Association="Model.FK_MenuIngredient_Ingredient">
       <End Role="Ingredient" EntitySet="Ingredient" />
@@ -69,18 +81,6 @@
     <AssociationSet Name="FK_MenuIngredient_Ingredient5" Association="Model.FK_MenuIngredient_Ingredient5">
       <End Role="Ingredient" EntitySet="Ingredient" />
       <End Role="MenuIngredient" EntitySet="MenuIngredient" />
-    </AssociationSet>
-    <AssociationSet Name="FK_MenuIngredient_Menu" Association="Model.FK_MenuIngredient_Menu">
-      <End Role="Menu" EntitySet="Menu" />
-      <End Role="MenuIngredient" EntitySet="MenuIngredient" />
-    </AssociationSet>
-    <AssociationSet Name="FK_MenuIngredient_Menu1" Association="Model.FK_MenuIngredient_Menu1">
-      <End Role="Menu" EntitySet="Menu" />
-      <End Role="MenuIngredient" EntitySet="MenuIngredient" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderMenu_Menu" Association="Model.FK_OrderMenu_Menu">
-      <End Role="Menu" EntitySet="Menu" />
-      <End Role="OrderMenu" EntitySet="OrderMenu" />
     </AssociationSet>
     <AssociationSet Name="FK_Order_OrderMenu" Association="Model.FK_Order_OrderMenu">
       <End Role="OrderMenu" EntitySet="OrderMenu" />
@@ -120,7 +120,25 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Menu" Relationship="Model.FK_Menu_Category" FromRole="Category" ToRole="Menu" />
+    <NavigationProperty Name="DishMenu" Relationship="Model.FK_Menu_Category" FromRole="Category" ToRole="DishMenu" />
+  </EntityType>
+  <EntityType Name="DishMenu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="PreparingTimeMin" Type="Int32" />
+    <Property Name="Photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="MenuIngredientID" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Model.FK_Menu_Category" FromRole="DishMenu" ToRole="Category" />
+    <NavigationProperty Name="MenuIngredient" Relationship="Model.FK_MenuIngredient_Menu" FromRole="DishMenu" ToRole="MenuIngredient" />
+    <NavigationProperty Name="MenuIngredient1" Relationship="Model.FK_MenuIngredient_Menu1" FromRole="DishMenu" ToRole="MenuIngredient" />
+    <NavigationProperty Name="OrderMenu" Relationship="Model.FK_OrderMenu_Menu" FromRole="DishMenu" ToRole="OrderMenu" />
   </EntityType>
   <EntityType Name="Ingredient">
     <Key>
@@ -135,44 +153,26 @@
     <NavigationProperty Name="MenuIngredient4" Relationship="Model.FK_MenuIngredient_Ingredient4" FromRole="Ingredient" ToRole="MenuIngredient" />
     <NavigationProperty Name="MenuIngredient5" Relationship="Model.FK_MenuIngredient_Ingredient5" FromRole="Ingredient" ToRole="MenuIngredient" />
   </EntityType>
-  <EntityType Name="Menu">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Size" Type="Int32" />
-    <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="PreparingTimeMin" Type="Int32" />
-    <Property Name="Photo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CategoryID" Type="Int32" Nullable="false" />
-    <Property Name="MenuIngredientID" Type="Int32" />
-    <NavigationProperty Name="Category" Relationship="Model.FK_Menu_Category" FromRole="Menu" ToRole="Category" />
-    <NavigationProperty Name="MenuIngredient" Relationship="Model.FK_MenuIngredient_Menu" FromRole="Menu" ToRole="MenuIngredient" />
-    <NavigationProperty Name="MenuIngredient1" Relationship="Model.FK_MenuIngredient_Menu1" FromRole="Menu" ToRole="MenuIngredient" />
-    <NavigationProperty Name="OrderMenu" Relationship="Model.FK_OrderMenu_Menu" FromRole="Menu" ToRole="OrderMenu" />
-  </EntityType>
   <EntityType Name="MenuIngredient">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MenuID" Type="Int32" Nullable="false" />
+    <Property Name="DishMenuID" Type="Int32" Nullable="false" />
     <Property Name="Ingredient1ID" Type="Int32" />
     <Property Name="Ingredient2ID" Type="Int32" />
     <Property Name="Ingredient3ID" Type="Int32" />
     <Property Name="Ingredient4ID" Type="Int32" />
     <Property Name="Ingredient5ID" Type="Int32" />
     <Property Name="Ingredient6ID" Type="Int32" />
+    <NavigationProperty Name="DishMenu" Relationship="Model.FK_MenuIngredient_Menu" FromRole="MenuIngredient" ToRole="DishMenu" />
+    <NavigationProperty Name="DishMenu1" Relationship="Model.FK_MenuIngredient_Menu1" FromRole="MenuIngredient" ToRole="DishMenu" />
     <NavigationProperty Name="Ingredient" Relationship="Model.FK_MenuIngredient_Ingredient" FromRole="MenuIngredient" ToRole="Ingredient" />
     <NavigationProperty Name="Ingredient1" Relationship="Model.FK_MenuIngredient_Ingredient1" FromRole="MenuIngredient" ToRole="Ingredient" />
     <NavigationProperty Name="Ingredient2" Relationship="Model.FK_MenuIngredient_Ingredient2" FromRole="MenuIngredient" ToRole="Ingredient" />
     <NavigationProperty Name="Ingredient3" Relationship="Model.FK_MenuIngredient_Ingredient3" FromRole="MenuIngredient" ToRole="Ingredient" />
     <NavigationProperty Name="Ingredient4" Relationship="Model.FK_MenuIngredient_Ingredient4" FromRole="MenuIngredient" ToRole="Ingredient" />
     <NavigationProperty Name="Ingredient5" Relationship="Model.FK_MenuIngredient_Ingredient5" FromRole="MenuIngredient" ToRole="Ingredient" />
-    <NavigationProperty Name="Menu" Relationship="Model.FK_MenuIngredient_Menu" FromRole="MenuIngredient" ToRole="Menu" />
-    <NavigationProperty Name="Menu1" Relationship="Model.FK_MenuIngredient_Menu1" FromRole="MenuIngredient" ToRole="Menu" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -192,12 +192,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MenuID" Type="Int32" Nullable="false" />
+    <Property Name="DishMenuID" Type="Int32" Nullable="false" />
     <Property Name="TableID" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
     <Property Name="SumCost" Type="Decimal" Precision="10" Scale="2" />
-    <NavigationProperty Name="Menu" Relationship="Model.FK_OrderMenu_Menu" FromRole="OrderMenu" ToRole="Menu" />
+    <NavigationProperty Name="DishMenu" Relationship="Model.FK_OrderMenu_Menu" FromRole="OrderMenu" ToRole="DishMenu" />
     <NavigationProperty Name="Order" Relationship="Model.FK_Order_OrderMenu" FromRole="OrderMenu" ToRole="Order" />
     <NavigationProperty Name="Table" Relationship="Model.FK_OrderMenu_Order" FromRole="OrderMenu" ToRole="Table" />
   </EntityType>
@@ -251,13 +251,49 @@
   </EntityType>
   <Association Name="FK_Menu_Category">
     <End Type="Model.Category" Role="Category" Multiplicity="1" />
-    <End Type="Model.Menu" Role="Menu" Multiplicity="*" />
+    <End Type="Model.DishMenu" Role="DishMenu" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Menu">
+      <Dependent Role="DishMenu">
         <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuIngredient_Menu">
+    <End Type="Model.DishMenu" Role="DishMenu" Multiplicity="1" />
+    <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DishMenu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MenuIngredient">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuIngredient_Menu1">
+    <End Type="Model.DishMenu" Role="DishMenu" Multiplicity="1" />
+    <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DishMenu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MenuIngredient">
+        <PropertyRef Name="DishMenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderMenu_Menu">
+    <End Type="Model.DishMenu" Role="DishMenu" Multiplicity="1" />
+    <End Type="Model.OrderMenu" Role="OrderMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DishMenu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderMenu">
+        <PropertyRef Name="DishMenuID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -330,42 +366,6 @@
       </Principal>
       <Dependent Role="MenuIngredient">
         <PropertyRef Name="Ingredient6ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_MenuIngredient_Menu">
-    <End Type="Model.Menu" Role="Menu" Multiplicity="1" />
-    <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Menu">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="MenuIngredient">
-        <PropertyRef Name="ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_MenuIngredient_Menu1">
-    <End Type="Model.Menu" Role="Menu" Multiplicity="1" />
-    <End Type="Model.MenuIngredient" Role="MenuIngredient" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Menu">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="MenuIngredient">
-        <PropertyRef Name="MenuID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderMenu_Menu">
-    <End Type="Model.Menu" Role="Menu" Multiplicity="1" />
-    <End Type="Model.OrderMenu" Role="OrderMenu" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Menu">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="OrderMenu">
-        <PropertyRef Name="MenuID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
