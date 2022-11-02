@@ -37,10 +37,7 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
         }
         private void GetProductList(int catID)
         {
-
             lv_Menu.ItemsSource = ClassHelper.AppData.context.DishMenu.Where(i => i.CategoryID == catID).ToList();
-
-
         }
 
         private void Btn_Backet_Click(object sender, RoutedEventArgs e)
@@ -60,7 +57,11 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
 
         private void Dtn_Order_Click(object sender, RoutedEventArgs e)
         {
-            var dish = lv_Menu.SelectedItem as DishMenu;
+            var btn = sender as Button;
+            if (btn == null)
+                return;
+            var dish = btn.DataContext as DishMenu;
+            
             if (dish != null)
             {
                 WindowOrder orderWindow = new WindowOrder(dish);
