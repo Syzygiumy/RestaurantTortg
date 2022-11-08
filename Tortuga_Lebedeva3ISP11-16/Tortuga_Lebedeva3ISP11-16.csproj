@@ -226,20 +226,20 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\Роллы.jpg" />
-    <Resource Include="Images\ГорячиеБлюда.jpg" />
-    <Resource Include="Images\ГорячиеБлюдаВыбрано.jpg" />
-    <Resource Include="Images\ГорячиеЗакуски.jpg" />
-    <Resource Include="Images\ГорячиеЗакускиВыбрано.jpg" />
-    <Resource Include="Images\Десерты.jpg" />
-    <Resource Include="Images\ДесертыВыбрано.jpg" />
-    <Resource Include="Images\РоллыВыбрано.jpg" />
-    <Resource Include="Images\Супы.jpg" />
-    <Resource Include="Images\СупыВыбрано.jpg" />
-    <Resource Include="Images\Суши.jpg" />
-    <Resource Include="Images\СушиВыбрано.jpg" />
-    <Resource Include="Images\ХолодныеЗакуски.jpg" />
-    <Resource Include="Images\ХолодныеЗакускиВыбрано.jpg" />
+    <Resource Include="Images\Роллы.png" />
+    <Resource Include="Images\РоллыВыбрано.png" />
+    <Resource Include="Images\Супы.png" />
+    <Resource Include="Images\СупыВыбрано.png" />
+    <Resource Include="Images\Суши.png" />
+    <Resource Include="Images\СушиВыбрано.png" />
+    <Resource Include="Images\ГорячиеБлюда.png" />
+    <Resource Include="Images\ГорячиеБлюдаВыбрано.png" />
+    <Resource Include="Images\ГорячиеЗакуски.png" />
+    <Resource Include="Images\ГорячиеЗакускиВыбрано.png" />
+    <Resource Include="Images\Десерты.png" />
+    <Resource Include="Images\ДесертыВыбрано.png" />
+    <Resource Include="Images\ХолодныеЗакуски.png" />
+    <Resource Include="Images\ХолодныеЗакускиВыбрано.png" />
     <Resource Include="Images\Окно заказа.jpg" />
     <Resource Include="Images\Окно подробности блюда.jpg" />
     <Resource Include="Images\Корзина2.jpg" />

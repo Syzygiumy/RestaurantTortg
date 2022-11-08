@@ -28,7 +28,11 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
         {
             InitializeComponent();
 
-            MessageBox.Show(dish.Name);
+            txt_Name.Text = dish.Name;
+            txt_Desc.Text = dish.Description;
+            txt_Time.Text = dish.PreparingTimeMin.ToString();
+            txt_Sum.Text = dish.Cost.ToString();
+            txt_Quant.Text = dish.Size.ToString();
         }
 
         private void Btn_Close_Click(object sender, RoutedEventArgs e)

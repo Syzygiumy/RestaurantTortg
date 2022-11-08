@@ -24,8 +24,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="98*"/>
-            <RowDefinition Height="39*"/>
-            <RowDefinition Height="116*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="108*"/>
             <RowDefinition Height="54*"/>
             <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
@@ -56,17 +56,18 @@
                 Height="47"
                 x:Name="Btn_Order" Opacity="0" Margin="0,23,10,0"/>
 
-        <TextBlock Text="Назв. блюда" FontFamily="Century Gothic" FontSize="22" 
+        <TextBlock x:Name="txt_Name" Text="Назв. блюда" 
+                   FontFamily="Century Gothic" FontSize="18" 
                    Foreground="Black" 
                    Grid.Column="1" 
-                   Grid.Row="1" 
-                   TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="4,0,0,0"/>
+                   TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="-10,98,0,0" Grid.RowSpan="2" Width="526" TextAlignment="Center"/>
 
         <TextBlock Text="Краткое описание" FontFamily="Century Gothic" 
                    Foreground="#FF706D69" 
                    Grid.Column="1" 
-                   Grid.Row="2" 
-                   TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="4,0,0,0" FontSize="14"/>
+                   Grid.Row="2"
+                   x:Name="txt_Desc"
+                   TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="8,4,18,4" FontSize="14"/>
 
         <TextBlock Text="Время приготовления:" FontFamily="Century Gothic" 
                    Foreground="#FF706D69" 
@@ -86,6 +87,25 @@
                    Margin="8,7,0,0"
                    TextWrapping="Wrap" FontSize="14"/>
 
+        <TextBlock Text="Кол-во порций:" FontFamily="Century Gothic" 
+                   Foreground="#FF706D69" 
+                   Grid.Column="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Grid.Row="4" Height="20" Width="111" 
+                   Margin="8,7,0,0"
+                   TextWrapping="Wrap" FontSize="14"/>
+
+        <TextBlock Text="руб." FontFamily="Century Gothic" 
+                   Foreground="#FF706D69" 
+                   Grid.Column="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Grid.Row="4" Height="20" 
+                   Margin="129,7,0,0"
+                   x:Name="txt_Time"
+                   TextWrapping="Wrap" FontSize="14" Width="30"/>
+
         <TextBlock Text="Quant" FontFamily="Century Gothic" 
                    Foreground="#FF706D69" 
                    Grid.Column="1"
@@ -93,6 +113,7 @@
                    VerticalAlignment="Top"
                    Grid.Row="3" Height="20" Width="56" 
                    Margin="0,7,21,0"
+                   x:Name="txt_Quant"
                    TextWrapping="Wrap" FontSize="14"/>
 
         <TextBlock Text="Sum" FontFamily="Century Gothic" 
@@ -102,6 +123,7 @@
                    VerticalAlignment="Top"
                    Grid.Row="3" Height="20" Width="63" 
                    Margin="57,7,0,0"
+                   x:Name="txt_Sum"
                    TextWrapping="Wrap" FontSize="14"/>
 
         <TextBlock Text="руб." FontFamily="Century Gothic" 
@@ -122,6 +144,32 @@
                    Margin="8,7,0,0"
                    TextWrapping="Wrap" FontSize="14"/>
 
+        <TextBlock Grid.Row="4"
+                   Width="14"
+                   Height="30"
+                   Text="x" 
+                   Foreground="White"
+                   FontSize="24"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left" 
+                   Margin="104,15,0,0" 
+                   TextAlignment="Center"
+                   FontFamily="Century Gothic"/>
+
+        <TextBlock Grid.Row="4"
+                   Width="56"
+                   Height="28"
+                   Text="1" 
+                   Foreground="White"
+                   FontSize="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   Margin="22,-18,0,0" 
+                   TextAlignment="Center"
+                   FontFamily="Century Gothic"
+                   x:Name="tbx_Quant"/>
+
+
         <TextBlock Text="SumCost" FontFamily="Century Gothic" 
                    Foreground="#FF706D69" 
                    Grid.Column="1"
@@ -130,6 +178,7 @@
                    Grid.Row="4" 
                    Height="20" Width="114"
                    Margin="122,7,0,0"
+                   x:Name="txt_SumCost"
                    TextWrapping="Wrap" FontSize="14"/>
 
         <Button Style="{DynamicResource ButtonStyle1}"
@@ -137,14 +186,14 @@
                 HorizontalAlignment="Left" Width="40" 
                 Height="40"
                 x:Name="Btn_Plus" Opacity="0"
-                Grid.Row="4" Margin="18,7,0,0"/>
+                Grid.Row="4" Margin="18,3,0,0"/>
 
         <Button Style="{DynamicResource ButtonStyle1}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right" Width="40" 
                 Height="40"
                 x:Name="Btn_Minus" Opacity="0"
-                Grid.Row="4" Margin="0,8,8,0"/>
+                Grid.Row="4" Margin="0,5,8,0"/>
 
     </Grid>
 </Window>

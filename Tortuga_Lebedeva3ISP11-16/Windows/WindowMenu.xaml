@@ -58,8 +58,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="27*"/>
-                            <RowDefinition Height="76*"/>
+                            <RowDefinition Height="36*"/>
+                            <RowDefinition Height="67*"/>
                             <RowDefinition Height="17*"/>
                             <RowDefinition Height="30*"/>
                         </Grid.RowDefinitions>
@@ -75,15 +75,17 @@
                                    Grid.Row="3" Margin="31,5,5,5"/>
 
                         <TextBlock Text="{Binding Name}" FontFamily="Century Gothic"
-                                   FontSize="14"
+                                   FontSize="12"
                                     Grid.ColumnSpan="4" 
-                                   Grid.Column="1" Margin="6,4,4,5"/>
+                                   Grid.Column="1" Margin="6,4,4,5" 
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"/>
 
                         <TextBlock Text="{Binding Description}" FontFamily="Century Gothic"
-                                   FontSize="11" Foreground="#FF5B5A5A" 
+                                   FontSize="10" Foreground="#FF5B5A5A" 
                                    Grid.ColumnSpan="4"
                                    Grid.Column="1" 
-                                   Grid.Row="1" Margin="4,3,7,3" Width="Auto" 
+                                   Grid.Row="1" Margin="7,3,5,3" Width="Auto" 
                                    Height="Auto"
                                    TextWrapping="WrapWithOverflow"/>
 
@@ -235,8 +237,8 @@
 
 
         <!-- ~~~~~~~~~~~~~~~~~~Иконки~~~~~~~~~~~~~~~~~~~~ -->
-        <Image Source="/Images/ГорячиеЗакуски.jpg"
-                Width="355"
+        <Image Source="/Images/ГорячиеЗакуски.png"
+                Width="351"
                 Height="60"
                 Grid.Row="1"
                 VerticalAlignment="Bottom"
@@ -244,8 +246,8 @@
                 Opacity="100" Margin="10,0,0,14" 
                x:Name="Img_GorZakOff"/>
 
-        <Image Source="/Images/ГорячиеЗакускиВыбрано.jpg"
-                Width="355"
+        <Image Source="/Images/ГорячиеЗакускиВыбрано.png"
+                Width="351"
                 Height="60"
                 Grid.Row="1"
                 VerticalAlignment="Bottom"
@@ -253,8 +255,8 @@
                 Opacity="0" Margin="10,0,0,14"
                 x:Name="Img_GorZakOn"/>
 
-        <Image Source="/Images/ХолодныеЗакуски.jpg"
-                Width="355"
+        <Image Source="/Images/ХолодныеЗакуски.png"
+                Width="351"
                 Height="60"
                 Grid.Row="2"
                 VerticalAlignment="Bottom"
@@ -262,8 +264,8 @@
                 Opacity="100" Margin="10,0,0,9"
                 x:Name="Img_HolZakOff"/>
 
-        <Image Source="/Images/ХолодныеЗакускиВыбрано.jpg"
-                Width="355"
+        <Image Source="/Images/ХолодныеЗакускиВыбрано.png"
+                Width="351"
                 Height="60"
                 Grid.Row="2"
                 VerticalAlignment="Bottom"
@@ -271,8 +273,8 @@
                 Opacity="0" Margin="10,0,0,9"
                 x:Name="Img_HolZakOn"/>
 
-        <Image Source="/Images/Суши.jpg"
-                Width="355"
+        <Image Source="/Images/Суши.png"
+                Width="351"
                 Height="60"
                 Grid.Row="3"
                 VerticalAlignment="Bottom"
@@ -280,8 +282,8 @@
                 Opacity="100" Margin="10,0,0,8"
                 x:Name="Img_SushiOff"/>
 
-        <Image Source="/Images/СушиВыбрано.jpg"
-                Width="355"
+        <Image Source="/Images/СушиВыбрано.png"
+                Width="351"
                 Height="60"
                 Grid.Row="3"
                 VerticalAlignment="Bottom"
@@ -289,8 +291,8 @@
                 Opacity="0" Margin="10,0,0,8"
                 x:Name="Img_SushiOn"/>
 
-        <Image Source="/Images/Роллы.jpg"
-                Width="355"
+        <Image Source="/Images/Роллы.png"
+                Width="351"
                 Height="60"
                 Grid.Row="4"
                 VerticalAlignment="Bottom"
@@ -298,8 +300,8 @@
                 Opacity="10" Margin="10,0,0,8"
                 x:Name="Img_RolliOff"/>
 
-        <Image Source="/Images/РоллыВыбрано.jpg"
-                Width="355"
+        <Image Source="/Images/РоллыВыбрано.png"
+                Width="351"
                 Height="60"
                 Grid.Row="4"
                 VerticalAlignment="Bottom"
@@ -307,8 +309,8 @@
                 Opacity="0" Margin="10,0,0,8"
                 x:Name="Img_RolliOn"/>
 
-        <Image Source="/Images/Супы.jpg"
-                Width="355"
+        <Image Source="/Images/Супы.png"
+                Width="351"
                 Height="60"
                 Grid.Row="5"
                 VerticalAlignment="Bottom"
@@ -316,8 +318,8 @@
                 Opacity="100" Margin="10,0,0,9" 
                 x:Name="Img_SoupOff"/>
 
-        <Image Source="/Images/СупыВыбрано.jpg"
-                Width="355"
+        <Image Source="/Images/СупыВыбрано.png"
+                Width="351"
                 Height="60"
                 Grid.Row="5"
                 VerticalAlignment="Bottom"
@@ -325,8 +327,8 @@
                 Opacity="0" Margin="10,0,0,9"
                 x:Name="Img_SoupOn"/>
 
-        <Image Source="/Images/ГорячиеБлюда.jpg"
-                Width="355"
+        <Image Source="/Images/ГорячиеБлюда.png"
+                Width="351"
                 Height="60"
                 Grid.Row="6"
                 VerticalAlignment="Bottom"
@@ -335,8 +337,8 @@
                 x:Name="Img_HotDishOff"
                 />
 
-        <Image Source="/Images/ГорячиеБлюдаВыбрано.jpg"
-                Width="355"
+        <Image Source="/Images/ГорячиеБлюдаВыбрано.png"
+                Width="351"
                 Height="60"
                 Grid.Row="6"
                 VerticalAlignment="Bottom"
@@ -344,8 +346,8 @@
                 Opacity="0" Margin="10,0,0,5"
                 x:Name="Img_HotDishOn"/>
 
-        <Image Source="/Images/Десерты.jpg"
-                Width="355"
+        <Image Source="/Images/Десерты.png"
+                Width="351"
                 Height="60"
                 Grid.Row="7"
                 VerticalAlignment="Bottom"
@@ -353,8 +355,8 @@
                 Opacity="100" Margin="10,0,0,3"
                 x:Name="Img_DessertOff"/>
 
-        <Image Source="/Images/ДесертыВыбрано.jpg"
-                Width="355"
+        <Image Source="/Images/ДесертыВыбрано.png"
+                Width="351"
                 Height="60"
                 Grid.Row="7"
                 VerticalAlignment="Bottom"
