@@ -40,26 +40,60 @@
                    Grid.Column="1"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   x:Name="tbl_Name"
-                   TextWrapping="Wrap" Margin="-8,18,0,0" Width="466" Height="78"/>
+                   TextAlignment="Center"
+                   x:Name="txt_Name"
+                   TextWrapping="Wrap" 
+                   Margin="-8,18,0,0" Width="466" Height="78"/>
 
         <TextBlock Text="{Binding Menu.Description}" 
                    FontFamily="Century Gothic"
-                   FontSize="24" Foreground="#FF5B5A5A" 
+                   FontSize="19" Foreground="#FF5B5A5A" 
                    Grid.ColumnSpan="4"
                    Grid.Column="1" 
                    Grid.Row="1"
                    Grid.RowSpan="2"
-                   TextWrapping="Wrap" Width="482" Margin="-11,0,0,0"
-                   x:Name="tbl_Descr"/>
+                   TextWrapping="Wrap" Width="482" Margin="-5,0,0,0"
+                   x:Name="txt_Desc"/>
 
         <TextBlock Text="{Binding MenuIngredient.Ingredient1}" 
                    FontFamily="Century Gothic"
                    FontSize="24" Foreground="#FF5B5A5A"
                    Grid.Row="2"
                    Grid.RowSpan="2"
-                   TextWrapping="Wrap" Width="300" Height="166" Margin="14,21,0,0"
-                   x:Name="tbl_MenuIng1"/>
+                   TextWrapping="Wrap" 
+                   Width="300" 
+                   Height="30" Margin="14,-111,0,0"
+                   x:Name="txt_MenuIng1"/>
+
+        <TextBlock Text="{Binding MenuIngredient.Ingredient2}" 
+                   FontFamily="Century Gothic"
+                   FontSize="24" Foreground="#FF5B5A5A"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   TextWrapping="Wrap" 
+                   Width="300" 
+                   Height="30" Margin="14,-35,0,0"
+                   x:Name="txt_MenuIng2"/>
+
+        <TextBlock Text="{Binding MenuIngredient.Ingredient3}" 
+                   FontFamily="Century Gothic"
+                   FontSize="24" Foreground="#FF5B5A5A"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   TextWrapping="Wrap" 
+                   Width="300" 
+                   Height="30" Margin="14,41,0,0"
+                   x:Name="txt_MenuIng3"/>
+
+        <TextBlock Text="{Binding MenuIngredient.Ingredient4}" 
+                   FontFamily="Century Gothic"
+                   FontSize="24" Foreground="#FF5B5A5A"
+                   Grid.Row="2"
+                   Grid.RowSpan="2"
+                   TextWrapping="Wrap" 
+                   Width="300" 
+                   Height="30" Margin="14,117,0,0"
+                   x:Name="txt_MenuIng4"/>
 
         <Button Style="{DynamicResource ButtonStyle1}" Grid.Column="2"
                 Grid.Row="4"

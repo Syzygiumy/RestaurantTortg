@@ -49,10 +49,19 @@ namespace Tortuga_Lebedeva3ISP11_16.Windows
 
         private void Dtn_Dish1_Click(object sender, RoutedEventArgs e)
         {
-            WindowDish dishWindow = new WindowDish();
-            this.Opacity = 0.2;
-            dishWindow.ShowDialog();
-            this.Opacity = 1;
+            var btn = sender as Button;
+            if (btn == null)
+                return;
+            var dish = btn.DataContext as DishMenu;
+
+            if (dish != null)
+            {
+
+                WindowDish dishWindow = new WindowDish(dish);
+                this.Opacity = 0.2;
+                dishWindow.ShowDialog();
+                this.Opacity = 1;
+            }
         }
 
         private void Dtn_Order_Click(object sender, RoutedEventArgs e)

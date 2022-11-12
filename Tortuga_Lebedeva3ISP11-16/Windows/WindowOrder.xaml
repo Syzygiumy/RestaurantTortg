@@ -103,7 +103,7 @@
                    VerticalAlignment="Top"
                    Grid.Row="4" Height="20" 
                    Margin="129,7,0,0"
-                   x:Name="txt_Time"
+                   x:Name="txt_Portions"
                    TextWrapping="Wrap" FontSize="14" Width="30"/>
 
         <TextBlock Text="Quant" FontFamily="Century Gothic" 
@@ -113,7 +113,7 @@
                    VerticalAlignment="Top"
                    Grid.Row="3" Height="20" Width="56" 
                    Margin="0,7,21,0"
-                   x:Name="txt_Quant"
+                   x:Name="txt_Time"
                    TextWrapping="Wrap" FontSize="14"/>
 
         <TextBlock Text="Sum" FontFamily="Century Gothic" 
