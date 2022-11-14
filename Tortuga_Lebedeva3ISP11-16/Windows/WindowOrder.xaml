@@ -54,7 +54,8 @@
                 HorizontalAlignment="Right" Width="177" 
                 Grid.Column="2"
                 Height="47"
-                x:Name="Btn_Order" Opacity="0" Margin="0,23,10,0"/>
+                x:Name="Btn_Order" Opacity="0" Margin="0,23,10,0"
+                Click="Btn_Order_Click"/>
 
         <TextBlock x:Name="txt_Name" Text="Назв. блюда" 
                    FontFamily="Century Gothic" FontSize="18" 

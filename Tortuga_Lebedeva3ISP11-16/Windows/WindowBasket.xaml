@@ -9,7 +9,7 @@
     <Window.Resources>
         <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
             <Setter Property="Template">
-            <Setter.Value>
+                <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border CornerRadius="40" Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
@@ -33,10 +33,141 @@
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Image Source="/Images/Корзина2.jpg" Grid.RowSpan="4" Grid.ColumnSpan="3" />
-        <ListView Grid.Row="2"
-                  Grid.Column="1">
-            
+
+        <!-- Вьюшка -->
+
+        <ListView Grid.Column="1"
+                  Grid.Row="2"
+                  x:Name="lv_Menu"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="573"
+                          Height="196"
+                          Margin="10"
+                          >
+                        <Grid.Background>
+                            <ImageBrush ImageSource="/Images/КорзинаИконкаБлюда.jpg"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="202*"/>
+                            <ColumnDefinition Width="125*"/>
+                            <ColumnDefinition Width="42*"/>
+                            <ColumnDefinition Width="141*"/>
+                            <ColumnDefinition Width="63*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="61*"/>
+                            <RowDefinition Height="67*"/>
+                            <RowDefinition Height="27*"/>
+                            <RowDefinition Height="41*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="{Binding Name}" FontFamily="Century Gothic"
+                                   FontSize="15"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="3"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" Height="19" Width="46"/>
+
+                        <TextBlock Text="{Binding Description}" FontFamily="Century Gothic"
+                                   FontSize="11" Foreground="#FF5B5A5A" 
+                                   Grid.ColumnSpan="4"
+                                   Grid.Column="1" 
+                                   Grid.Row="1" Width="Auto" 
+                                   Height="Auto"
+                                   TextWrapping="WrapWithOverflow" Margin="0,3,0,0"/>
+
+                        <TextBlock Text="Кол-во порций:" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="1" 
+                                   Grid.Row="2"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"/>
+
+                        <TextBlock Text="{Binding Size}" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="2"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right" Margin="0,0,45,0" Width="35"/>
+
+                        <TextBlock Text="Время приготовления:" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="1" 
+                                   Grid.Row="3"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" Margin="0,-14,0,0"/>
+
+                        <TextBlock Text="{Binding PreparingTimeMin}" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="3"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right" Margin="0,-14,4,0" Width="38"/>
+
+                        <TextBlock Text="Цена:" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="3" 
+                                   Grid.Row="2"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" Margin="10,0,0,0"/>
+
+                        <TextBlock Text="{Binding Cost}" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="3"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="2"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right" Margin="0,0,85,0" Width="73"/>
+
+                        <TextBlock Text="Общая сумма:" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="3" 
+                                   Grid.Row="3"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left" Margin="10,-14,0,0"/>
+
+                        <TextBlock Text="{Binding SumCost}" FontFamily="Century Gothic" 
+                                   FontSize="11" 
+                                   Foreground="#FF8D7B58" 
+                                   Grid.Column="3"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="3"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right" Margin="0,-14,21,0" Width="84"/>
+
+                        <Ellipse Grid.RowSpan="3" Width="140" Height="109" Margin="-5,3,0,0">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Images/20079-ed4_wide.jpg" 
+                                            Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
+
+        <!-- Вьюшка -->
 
         <Button Style="{DynamicResource ButtonStyle1}" x:Name="Btn_Menu"
                 Grid.Column="1"

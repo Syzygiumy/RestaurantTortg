@@ -65,6 +65,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClassHelper\AppData.cs" />
+    <Compile Include="ClassHelper\ProductData.cs" />
+    <Compile Include="ClassHelper\ProductShop.cs" />
     <Compile Include="DataBase\Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -226,6 +228,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\КорзинаИконкаБлюда.jpg" />
     <Resource Include="Images\Роллы.png" />
     <Resource Include="Images\РоллыВыбрано.png" />
     <Resource Include="Images\Супы.png" />
@@ -243,7 +246,6 @@
     <Resource Include="Images\Окно заказа.jpg" />
     <Resource Include="Images\Окно подробности блюда.jpg" />
     <Resource Include="Images\Корзина2.jpg" />
-    <Resource Include="Images\261197.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
